@@ -1,229 +1,169 @@
+<div class="card-image"></div>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+                        <div class="card-content">
 
-body {
-    font-family: Arial, sans-serif;
-    background: #ffffff;
-    color: #111111;
-    line-height: 1.8;
-}
+                            <span class="category">TV</span>
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+                            <h3>
+                                New Series Becomes a Global Hit
+                            </h3>
+
+                            <p>
+                                Audiences around the world are tuning in.
+                            </p>
+
+                        </div>
+
+                    </article>
 
 
-/* HEADER */
+                    <article class="news-card">
 
-header {
-    background: #000000;
-    color: #ffffff;
-    padding: 20px 0;
-}
+                        <div class="card-image"></div>
 
-header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-}
+                        <div class="card-content">
 
-.logo {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
+                            <span class="category">NEWS</span>
 
-nav {
-    display: flex;
-    gap: 25px;
-}
+                            <h3>
+                                Major Hollywood Announcement
+                            </h3>
 
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 15px;
-    transition: 0.2s;
-}
+                            <p>
+                                Here's everything we know so far.
+                            </p>
 
-nav a:hover {
-    opacity: 0.7;
-}
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-/* HERO */
+        <!-- FILM -->
+        <section class="section gray-section">
 
-.hero {
-    background: #111111;
-    color: #ffffff;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-}
+            <div class="container">
 
-.hero-content {
-    max-width: 700px;
-    padding: 80px 0;
-}
+                <div class="section-header">
 
-.category {
-    display: inline-block;
-    background: #e50914;
-    padding: 5px 14px;
-    border-radius: 4px;
-    font-size: 13px;
-    margin-bottom: 20px;
-}
+                    <h2>Film</h2>
 
-.hero h1 {
-    font-size: 52px;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
+                    <a href="#">View All →</a>
 
-.hero p {
-    font-size: 18px;
-    color: #cccccc;
-    margin-bottom: 30px;
-}
-
-.read-more {
-    display: inline-block;
-    background: #e50914;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    transition: 0.2s;
-}
-
-.read-more:hover {
-    background: #b20710;
-}
+                </div>
 
 
-/* LATEST NEWS */
+                <div class="feature-grid">
 
-.latest {
-    padding: 70px 0;
-}
+                    <article class="feature-card">
 
-.latest h2 {
-    font-size: 32px;
-    margin-bottom: 35px;
-}
+                        <div class="large-image"></div>
 
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
+                        <span class="category">FILM</span>
 
-.news-card {
-    border: 1px solid #e5e5e5;
-    background: #ffffff;
-    overflow: hidden;
-    transition: 0.2s;
-}
+                        <h2>
+                            The Films Shaping the Future of Cinema
+                        </h2>
 
-.news-card:hover {
-    transform: translateY(-4px);
-}
-
-.image-placeholder {
-    height: 220px;
-    background: #dddddd;
-}
-
-.news-content {
-    padding: 20px;
-}
-
-.news-content span {
-    color: #e50914;
-    font-size: 13px;
-}
-
-.news-content h3 {
-    font-size: 20px;
-    margin: 8px 0;
-    line-height: 1.5;
-}
-
-.news-content p {
-    color: #777777;
-    font-size: 14px;
-}
+                    </article>
 
 
-/* FOOTER */
+                    <article class="feature-card">
 
-footer {
-    background: #000000;
-    color: #ffffff;
-    padding: 50px 0;
-    text-align: center;
-}
+                        <div class="large-image"></div>
 
-.footer-logo {
-    font-size: 26px;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
+                        <span class="category">REVIEWS</span>
 
-footer p {
-    color: #aaaaaa;
-    margin-bottom: 20px;
-}
+                        <h2>
+                            What Critics Are Saying About the Latest Releases
+                        </h2>
 
-.socials {
-    color: #cccccc;
-}
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-/* MOBILE */
+        <!-- TV -->
+        <section class="section">
 
-@media (max-width: 768px) {
+            <div class="container">
 
-    header .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+                <div class="section-header">
 
-    nav {
-        width: 100%;
-        overflow-x: auto;
-        gap: 18px;
-    }
+                    <h2>TV</h2>
 
-    nav a {
-        white-space: nowrap;
-    }
+                    <a href="#">View All →</a>
 
-    .hero {
-        min-height: 420px;
-    }
+                </div>
 
-    .hero h1 {
-        font-size: 36px;
-    }
+                <div class="tv-grid">
 
-    .hero p {
-        font-size: 16px;
-    }
+                    <article>
+                        <div class="small-image"></div>
+                        <span class="category">TV</span>
+                        <h3>The Most Anticipated Shows Coming Soon</h3>
+                    </article>
 
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
+                    <article>
+                        <div class="small-image"></div>
+                        <span class="category">TV</span>
+                        <h3>What to Watch This Week</h3>
+                    </article>
 
-    .latest {
-        padding: 50px 0;
-    }
+                    <article>
+                        <div class="small-image"></div>
+                        <span class="category">STREAMING</span>
+                        <h3>The Biggest Streaming Releases</h3>
+                    </article>
 
-}
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="container footer-inner">
+
+            <div class="footer-logo">
+                CINEMA<span>DAILY</span>
+            </div>
+
+            <p>
+                Film, television and entertainment news from around the world.
+            </p>
+
+            <div class="footer-links">
+
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+                <a href="#">Telegram</a>
+                <a href="#">Contact</a>
+
+            </div>
+
+            <div class="copyright">
+                © 2026 CinemaDaily. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
