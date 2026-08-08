@@ -1,3 +1,7 @@
+/* ========================================
+   RESET
+======================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +21,10 @@
     --text-light: #777777;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: var(--white);
@@ -27,6 +35,10 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+img {
+    max-width: 100%;
 }
 
 .container {
@@ -45,27 +57,35 @@ a {
     background: var(--purple-main);
 }
 
+
+/* DESKTOP HEADER */
+
 .header-main {
     position: relative;
 
     width: 100%;
     height: 230px;
 
-    overflow: hidden;
-
     background: var(--purple-main);
+
+    overflow: hidden;
 }
 
 
-/* LOGO2 FILLS HEADER */
+/* LOGO AREA */
 
 .header-logo {
     position: absolute;
 
-    inset: 0;
+    top: 0;
+    left: 0;
 
     width: 100%;
-    height: 100%;
+    height: 170px;
+
+    overflow: hidden;
+
+    z-index: 1;
 }
 
 .header-logo a {
@@ -82,19 +102,21 @@ a {
     height: 100%;
 
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
 }
 
 
-/* BOTTOM ROW OVER IMAGE */
+/* LANGUAGE + SOCIAL */
 
 .header-bottom {
     position: absolute;
 
     left: 50%;
-    bottom: 14px;
+    bottom: 0;
 
     transform: translateX(-50%);
+
+    height: 60px;
 
     display: flex;
     align-items: center;
@@ -102,13 +124,16 @@ a {
 
     color: #ffffff;
 
-    z-index: 3;
+    z-index: 5;
 }
 
 .language {
     display: flex;
     align-items: center;
+
     gap: 10px;
+
+    flex-shrink: 0;
 }
 
 .language a {
@@ -117,6 +142,12 @@ a {
     font-size: 13px;
 
     opacity: 0.82;
+
+    transition: opacity 0.2s;
+}
+
+.language a:hover {
+    opacity: 1;
 }
 
 .language a.active {
@@ -124,11 +155,20 @@ a {
     font-weight: 700;
 }
 
+.language span {
+    color: rgba(255,255,255,0.75);
+}
+
+
+/* SOCIAL LINKS */
+
 .social-links {
     display: flex;
     align-items: center;
 
     gap: 24px;
+
+    flex-shrink: 0;
 }
 
 .social-links a {
@@ -138,6 +178,8 @@ a {
 
     opacity: 0.94;
 
+    white-space: nowrap;
+
     transition: opacity 0.2s;
 }
 
@@ -146,9 +188,13 @@ a {
 }
 
 
-/* NAVIGATION */
+/* ========================================
+   MAIN NAVIGATION
+======================================== */
 
 .main-nav {
+    width: 100%;
+
     background: var(--purple-dark);
 
     border-top: 1px solid rgba(255,255,255,0.15);
@@ -162,6 +208,14 @@ a {
     justify-content: center;
 
     gap: 45px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+.main-nav .nav-inner::-webkit-scrollbar {
+    display: none;
 }
 
 .main-nav .nav-inner a {
@@ -185,7 +239,7 @@ a {
 ======================================== */
 
 .hero-section {
-    padding: 18px 0 50px;
+    padding: 28px 0 50px;
 }
 
 .hero-grid {
@@ -230,10 +284,12 @@ a {
 
     color: #ffffff;
 
-    padding: 6px 12px;
+    padding: 7px 13px;
 
     font-size: 11px;
     font-weight: 700;
+
+    letter-spacing: 0.4px;
 }
 
 .hero-text {
@@ -246,6 +302,8 @@ a {
     position: relative;
 
     padding: 28px;
+
+    z-index: 2;
 }
 
 .category {
@@ -310,7 +368,7 @@ a {
 
 
 /* ========================================
-   SECTIONS
+   GENERAL SECTIONS
 ======================================== */
 
 .section {
@@ -334,8 +392,11 @@ a {
     padding-bottom: 12px;
 }
 
+.section-header h1,
 .section-header h2 {
     font-size: 30px;
+
+    line-height: 1.2;
 }
 
 .section-header a {
@@ -343,17 +404,19 @@ a {
 
     font-size: 13px;
     font-weight: 700;
+
+    white-space: nowrap;
 }
 
 
 /* ========================================
-   NEWS
+   NEWS GRID
 ======================================== */
 
 .news-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: 25px;
 }
@@ -369,6 +432,7 @@ a {
 }
 
 .card-image {
+    width: 100%;
     height: 230px;
 
     background: #dddddd;
@@ -377,7 +441,11 @@ a {
 }
 
 .article-card-image {
+    display: block;
+
     width: 100%;
+    height: 230px;
+
     object-fit: cover;
 }
 
@@ -403,12 +471,13 @@ a {
 .feature-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 30px;
 }
 
 .large-image {
+    width: 100%;
     height: 400px;
 
     background: #cccccc;
@@ -430,12 +499,13 @@ a {
 .tv-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: 25px;
 }
 
 .small-image {
+    width: 100%;
     height: 220px;
 
     background: #dddddd;
@@ -495,8 +565,9 @@ a {
 
 .article-meta {
     display: flex;
-
     align-items: center;
+
+    flex-wrap: wrap;
 
     gap: 10px;
 
@@ -509,7 +580,6 @@ a {
 
 .article-hero {
     width: 100%;
-
     height: 600px;
 
     margin-bottom: 45px;
@@ -562,6 +632,9 @@ a {
     margin: 45px 0 20px;
 }
 
+
+/* SIDEBAR */
+
 .article-sidebar {
     border-top: 3px solid var(--black);
 
@@ -612,7 +685,6 @@ footer {
 
 .footer-logo {
     font-size: 30px;
-
     font-weight: 900;
 
     margin-bottom: 15px;
@@ -632,6 +704,8 @@ footer {
     display: flex;
 
     justify-content: center;
+
+    flex-wrap: wrap;
 
     gap: 25px;
 
@@ -659,14 +733,36 @@ footer {
         height: 190px;
     }
 
+    .header-logo {
+        height: 140px;
+    }
+
+    .header-bottom {
+        height: 50px;
+    }
+
+    .social-links {
+        gap: 16px;
+    }
+
+    .social-links a {
+        font-size: 12px;
+    }
+
     .main-nav .nav-inner {
         justify-content: flex-start;
 
-        overflow-x: auto;
-
         gap: 28px;
 
-        padding: 0 8px;
+        padding: 0 15px;
+    }
+
+    .hero-image {
+        height: 430px;
+    }
+
+    .article-layout {
+        gap: 40px;
     }
 }
 
@@ -681,12 +777,33 @@ footer {
         width: 94%;
     }
 
+
+    /* HEADER */
+
     .header-main {
         height: 150px;
     }
 
+    .header-logo {
+        height: 105px;
+    }
+
+    .header-logo img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
     .header-bottom {
-        bottom: 9px;
+        height: 45px;
+
+        bottom: 0;
+    }
+
+    .language {
+        gap: 8px;
     }
 
     .language a {
@@ -704,11 +821,24 @@ footer {
     .main-nav .nav-inner {
         height: 45px;
 
+        justify-content: flex-start;
+
         gap: 22px;
+
+        overflow-x: auto;
+
+        padding: 0 18px;
     }
 
     .main-nav .nav-inner a {
         font-size: 11px;
+    }
+
+
+    /* HERO */
+
+    .hero-section {
+        padding-top: 28px;
     }
 
     .hero-grid {
@@ -731,9 +861,20 @@ footer {
         font-size: 30px;
     }
 
+    .hero-text p {
+        font-size: 15px;
+    }
+
     .side-stories {
         margin-top: 10px;
     }
+
+    .story-image {
+        height: 200px;
+    }
+
+
+    /* GRIDS */
 
     .news-grid,
     .feature-grid,
@@ -741,13 +882,33 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .card-image,
+    .article-card-image {
+        height: 240px;
+    }
+
     .large-image {
         height: 300px;
     }
 
+    .small-image {
+        height: 230px;
+    }
+
+
+    /* SECTIONS */
+
     .section {
         padding: 45px 0;
     }
+
+    .section-header h1,
+    .section-header h2 {
+        font-size: 27px;
+    }
+
+
+    /* ARTICLE */
 
     .article-page {
         padding: 40px 0 60px;
@@ -783,5 +944,52 @@ footer {
 
     .article-content h2 {
         font-size: 27px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 45px 0;
+    }
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 430px) {
+
+    .header-main {
+        height: 145px;
+    }
+
+    .header-logo {
+        height: 100px;
+    }
+
+    .header-bottom {
+        height: 45px;
+    }
+
+    .language a {
+        font-size: 10px;
+    }
+
+    .social-links {
+        gap: 7px;
+    }
+
+    .social-links a {
+        font-size: 9px;
+    }
+
+    .hero-image {
+        height: 330px;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
     }
 }
