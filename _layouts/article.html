@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ page.language | default: 'en' }}"
-      {% if page.language == "fa" %}dir="rtl"{% endif %}>
+
+<html
+    lang="{{ page.language | default: 'en' }}"
+    {% if page.language == "fa" %}dir="rtl"{% endif %}
+>
 
 <head>
 
@@ -11,12 +14,194 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>{{ page.title }} | CinemaDaily</title>
+
+    <!-- =================================
+         BASIC SEO
+    ================================== -->
+
+    <title>
+        {{ page.title }} | CinemaDaily
+    </title>
+
 
     <meta
         name="description"
-        content="{{ page.summary | default: page.title | escape }}"
+        content="{{ page.summary | default: page.title | strip_html | escape }}"
     >
+
+
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+
+    <link
+        rel="canonical"
+        href="{{ page.url | absolute_url }}"
+    >
+
+
+
+    <!-- =================================
+         OPEN GRAPH
+    ================================== -->
+
+    <meta
+        property="og:type"
+        content="article"
+    >
+
+
+    <meta
+        property="og:site_name"
+        content="CinemaDaily"
+    >
+
+
+    <meta
+        property="og:title"
+        content="{{ page.title | escape }}"
+    >
+
+
+    <meta
+        property="og:description"
+        content="{{ page.summary | default: page.title | strip_html | escape }}"
+    >
+
+
+    <meta
+        property="og:url"
+        content="{{ page.url | absolute_url }}"
+    >
+
+
+    {% if page.image %}
+
+    <meta
+        property="og:image"
+        content="{{ page.image | absolute_url }}"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="{{ page.title | escape }}"
+    >
+
+    {% endif %}
+
+
+
+    <!-- =================================
+         ARTICLE METADATA
+    ================================== -->
+
+    {% if page.date %}
+
+    <meta
+        property="article:published_time"
+        content="{{ page.date | date_to_xmlschema }}"
+    >
+
+    {% endif %}
+
+
+    {% if page.category %}
+
+    <meta
+        property="article:section"
+        content="{{ page.category | escape }}"
+    >
+
+    {% endif %}
+
+
+
+    <!-- =================================
+         X / TWITTER CARD
+    ================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+
+    <meta
+        name="twitter:title"
+        content="{{ page.title | escape }}"
+    >
+
+
+    <meta
+        name="twitter:description"
+        content="{{ page.summary | default: page.title | strip_html | escape }}"
+    >
+
+
+    {% if page.image %}
+
+    <meta
+        name="twitter:image"
+        content="{{ page.image | absolute_url }}"
+    >
+
+    {% endif %}
+
+
+
+    <!-- =================================
+         STRUCTURED DATA
+    ================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+
+        "headline": {{ page.title | jsonify }},
+
+        "description": {{ page.summary | default: page.title | strip_html | jsonify }},
+
+        "url": {{ page.url | absolute_url | jsonify }},
+
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": {{ page.url | absolute_url | jsonify }}
+        },
+
+        {% if page.image %}
+
+        "image": [
+            {{ page.image | absolute_url | jsonify }}
+        ],
+
+        {% endif %}
+
+        {% if page.date %}
+
+        "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+        "dateModified": {{ page.date | date_to_xmlschema | jsonify }},
+
+        {% endif %}
+
+        "publisher": {
+            "@type": "Organization",
+            "name": "CinemaDaily",
+            "logo": {
+                "@type": "ImageObject",
+                "url": {{ '/images/logo2.jpeg' | absolute_url | jsonify }}
+            }
+        }
+    }
+    </script>
+
+
+
+    <!-- =================================
+         STYLE
+    ================================== -->
 
     <link
         rel="stylesheet"
@@ -26,7 +211,12 @@
 </head>
 
 
-<body {% if page.language == "fa" %}class="rtl-page"{% endif %}>
+
+<body
+    {% if page.language == "fa" %}
+        class="rtl-page"
+    {% endif %}
+>
 
 
     <!-- =================================
@@ -41,7 +231,15 @@
 
             <div class="header-logo">
 
-                <a href="{% if page.language == 'fa' %}{{ '/fa.html' | relative_url }}{% else %}{{ '/index.html' | relative_url }}{% endif %}">
+                <a
+                    href="
+                    {% if page.language == 'fa' %}
+                        {{ '/fa.html' | relative_url }}
+                    {% else %}
+                        {{ '/index.html' | relative_url }}
+                    {% endif %}
+                    "
+                >
 
                     <img
                         src="{{ '/images/logo2.jpeg' | relative_url }}"
@@ -53,31 +251,44 @@
             </div>
 
 
+
             <div class="container header-bottom">
 
 
                 <div class="language">
 
+
                     <a
                         href="{{ '/index.html' | relative_url }}"
-                        {% if page.language != "fa" %}class="active"{% endif %}
+                        {% if page.language != "fa" %}
+                        class="active"
+                        {% endif %}
                     >
                         EN
                     </a>
 
-                    <span>|</span>
+
+                    <span>
+                        |
+                    </span>
+
 
                     <a
                         href="{{ '/fa.html' | relative_url }}"
-                        {% if page.language == "fa" %}class="active"{% endif %}
+                        {% if page.language == "fa" %}
+                        class="active"
+                        {% endif %}
                     >
                         فارسی
                     </a>
 
+
                 </div>
 
 
+
                 <div class="social-links">
+
 
                     <a
                         href="https://www.instagram.com/cinemadaily"
@@ -87,6 +298,7 @@
                         Instagram
                     </a>
 
+
                     <a
                         href="https://t.me/cinemadaily"
                         target="_blank"
@@ -94,6 +306,7 @@
                     >
                         Telegram
                     </a>
+
 
                     <a
                         href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
@@ -103,6 +316,7 @@
                         WhatsApp
                     </a>
 
+
                     <a
                         href="https://m.youtube.com/cinemadailytv?ra=m"
                         target="_blank"
@@ -111,9 +325,13 @@
                         YouTube
                     </a>
 
-                    <a href="{{ '/search.html' | relative_url }}">
+
+                    <a
+                        href="{{ '/search.html' | relative_url }}"
+                    >
                         Search
                     </a>
+
 
                 </div>
 
@@ -124,43 +342,53 @@
         </div>
 
 
+
         <!-- NAVIGATION -->
 
         <nav class="main-nav">
 
             <div class="container nav-inner">
 
+
                 <a href="{{ '/news.html' | relative_url }}">
                     NEWS
                 </a>
+
 
                 <a href="{{ '/film.html' | relative_url }}">
                     FILM
                 </a>
 
+
                 <a href="{{ '/tv.html' | relative_url }}">
                     TV
                 </a>
+
 
                 <a href="{{ '/reviews.html' | relative_url }}">
                     REVIEWS
                 </a>
 
+
                 <a href="{{ '/box-office.html' | relative_url }}">
                     BOX OFFICE
                 </a>
+
 
                 <a href="{{ '/awards.html' | relative_url }}">
                     AWARDS
                 </a>
 
+
                 <a href="{{ '/trailers.html' | relative_url }}">
                     TRAILERS
                 </a>
 
+
                 <a href="{{ '/features.html' | relative_url }}">
                     FEATURES
                 </a>
+
 
             </div>
 
@@ -188,11 +416,13 @@
             </div>
 
 
+
             <h1 class="article-title">
 
                 {{ page.title }}
 
             </h1>
+
 
 
             {% if page.summary %}
@@ -209,14 +439,19 @@
 
             <div class="article-meta">
 
+
                 {% if page.date %}
 
                 <span>
 
                     {% if page.language == "fa" %}
+
                         منتشر شده در
+
                     {% else %}
+
                         Published
+
                     {% endif %}
 
                     {{ page.date | date: "%B %d, %Y" }}
@@ -224,6 +459,7 @@
                 </span>
 
                 {% endif %}
+
 
             </div>
 
@@ -235,7 +471,7 @@
 
             <img
                 src="{{ page.image | relative_url }}"
-                alt="{{ page.title }}"
+                alt="{{ page.title | escape }}"
                 class="article-main-image"
             >
 
@@ -247,7 +483,7 @@
 
 
 
-            <!-- ARTICLE BODY + RELATED -->
+            <!-- ARTICLE + RELATED -->
 
             <div class="article-layout">
 
@@ -260,20 +496,23 @@
 
 
 
-                <!-- RELATED STORIES -->
-
                 <aside class="article-sidebar">
 
 
                     <div class="sidebar-title">
 
                         {% if page.language == "fa" %}
+
                             مطالب مرتبط
+
                         {% else %}
+
                             Related Stories
+
                         {% endif %}
 
                     </div>
+
 
 
                     {% assign related_articles =
@@ -285,17 +524,22 @@
                     %}
 
 
+
                     {% assign related_count = 0 %}
+
 
 
                     {% for article in related_articles %}
 
+
                         {% if article.url != page.url and related_count < 4 %}
+
 
                         <a
                             href="{{ article.url | relative_url }}"
                             class="sidebar-story"
                         >
+
 
                             <span class="category">
 
@@ -303,16 +547,21 @@
 
                             </span>
 
+
                             <strong>
 
                                 {{ article.title }}
 
                             </strong>
 
+
                         </a>
 
 
-                        {% assign related_count = related_count | plus: 1 %}
+                        {% assign related_count =
+                            related_count | plus: 1
+                        %}
+
 
                         {% endif %}
 
@@ -320,17 +569,26 @@
                     {% endfor %}
 
 
+
                     {% if related_count == 0 %}
+
 
                     <div class="sidebar-story">
 
+
                         {% if page.language == "fa" %}
+
                             هنوز مطلب مرتبطی منتشر نشده است.
+
                         {% else %}
+
                             No related stories yet.
+
                         {% endif %}
 
+
                     </div>
+
 
                     {% endif %}
 
@@ -365,6 +623,7 @@
             </div>
 
 
+
             <p>
 
                 {% if page.language == "fa" %}
@@ -383,37 +642,21 @@
 
             <div class="footer-links">
 
-                <a
-                    href="https://www.instagram.com/cinemadaily"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Instagram
+
+                <a href="{{ '/about.html' | relative_url }}">
+                    About
                 </a>
 
-                <a
-                    href="https://t.me/cinemadaily"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Telegram
+
+                <a href="{{ '/contact.html' | relative_url }}">
+                    Contact
                 </a>
 
-                <a
-                    href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    WhatsApp
+
+                <a href="{{ '/privacy.html' | relative_url }}">
+                    Privacy
                 </a>
 
-                <a
-                    href="https://m.youtube.com/cinemadailytv?ra=m"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    YouTube
-                </a>
 
             </div>
 
