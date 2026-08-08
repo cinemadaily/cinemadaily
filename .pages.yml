@@ -1,0 +1,50 @@
+media:
+  input: images
+  output: /images
+
+content:
+  - name: posts
+    label: Articles
+    path: content
+    type: collection
+
+    fields:
+      - name: title
+        label: Title
+        type: string
+
+      - name: category
+        label: Category
+        type: select
+        options:
+          values:
+            - News
+            - Film
+            - TV
+            - Reviews
+            - Box Office
+            - Awards
+
+      - name: language
+        label: Language
+        type: select
+        options:
+          values:
+            - en
+            - fa
+
+      - name: date
+        label: Publish Date
+        type: date
+
+      - name: summary
+        label: Summary
+        type: text
+
+      - name: image
+        label: Featured Image
+        type: image
+
+      - name: body
+        label: Article
+        type: rich-text
