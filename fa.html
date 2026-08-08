@@ -1,3 +1,7 @@
+---
+layout: null
+---
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -17,7 +21,10 @@
         content="آخرین اخبار سینما، تلویزیون، گیشه و سرگرمی در سینمادیلی."
     >
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="{{ '/style.css' | relative_url }}"
+    >
 
 </head>
 
@@ -25,7 +32,9 @@
 <body class="rtl-page">
 
 
-    <!-- HEADER -->
+    <!-- =========================
+         HEADER
+    ========================== -->
 
     <header class="site-header">
 
@@ -35,10 +44,10 @@
 
             <div class="header-logo">
 
-                <a href="fa.html">
+                <a href="{{ '/fa.html' | relative_url }}">
 
                     <img
-                        src="images/logo2.jpeg"
+                        src="{{ '/images/logo2.jpeg' | relative_url }}"
                         alt="CinemaDaily"
                     >
 
@@ -52,14 +61,14 @@
 
                 <div class="language">
 
-                    <a href="index.html">
+                    <a href="{{ '/index.html' | relative_url }}">
                         EN
                     </a>
 
                     <span>|</span>
 
                     <a
-                        href="fa.html"
+                        href="{{ '/fa.html' | relative_url }}"
                         class="active"
                     >
                         فارسی
@@ -102,10 +111,6 @@
                         YouTube
                     </a>
 
-                    <a href="#">
-                        Search
-                    </a>
-
                 </div>
 
 
@@ -114,8 +119,6 @@
 
         </div>
 
-
-        <!-- NAVIGATION -->
 
         <nav class="main-nav">
 
@@ -162,20 +165,68 @@
 
 
 
-    <!-- MAIN -->
+    <!-- =========================
+         PREPARE CMS CONTENT
+    ========================== -->
+
+    {% assign persian_articles = site.articles
+        | where: "language", "fa"
+        | sort: "date"
+        | reverse
+    %}
+
+    {% assign featured = persian_articles.first %}
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <main>
 
 
-        <!-- HERO -->
+        <!-- =====================
+             HERO
+        ====================== -->
+
+        {% if featured %}
 
         <section class="hero-section">
 
             <div class="container hero-grid">
 
 
-                <article class="hero-main">
+                <a
+                    href="{{ featured.url | relative_url }}"
+                    class="hero-main"
+                >
 
+
+                    {% if featured.image %}
+
+                    <div
+                        class="hero-image"
+                        style="
+                            background-image:
+                            linear-gradient(
+                                rgba(20,8,50,0.10),
+                                rgba(20,8,50,0.20)
+                            ),
+                            url('{{ featured.image | relative_url }}');
+
+                            background-size: cover;
+                            background-position: center;
+                        "
+                    >
+
+                        <div class="image-label">
+                            ویژه
+                        </div>
+
+                    </div>
+
+                    {% else %}
 
                     <div class="hero-image">
 
@@ -185,69 +236,74 @@
 
                     </div>
 
+                    {% endif %}
+
 
                     <div class="hero-text">
 
                         <span class="category">
-                            سینما
+                            {{ featured.category }}
                         </span>
 
                         <h1>
-                            تازه‌ترین خبرهای دنیای سینما
+                            {{ featured.title }}
                         </h1>
 
                         <p>
-                            آخرین اخبار، گزارش‌ها و اتفاقات مهم سینمای ایران و جهان را در سینمادیلی دنبال کنید.
+                            {{ featured.summary }}
                         </p>
 
                     </div>
 
 
-                </article>
+                </a>
 
 
 
                 <div class="side-stories">
 
+                    {% for article in persian_articles offset:1 limit:2 %}
 
-                    <article class="story">
+                    <a
+                        href="{{ article.url | relative_url }}"
+                        class="story"
+                    >
+
+                        {% if article.image %}
+
+                        <div
+                            class="story-image"
+                            style="
+                                background-image:
+                                url('{{ article.image | relative_url }}');
+
+                                background-size: cover;
+                                background-position: center;
+                            "
+                        ></div>
+
+                        {% else %}
 
                         <div class="story-image"></div>
+
+                        {% endif %}
+
 
                         <div class="story-content">
 
                             <span class="category">
-                                تلویزیون
+                                {{ article.category }}
                             </span>
 
                             <h2>
-                                تازه‌ترین خبرهای سریال‌ها و شبکه نمایش خانگی
+                                {{ article.title }}
                             </h2>
 
                         </div>
 
-                    </article>
+                    </a>
 
-
-
-                    <article class="story">
-
-                        <div class="story-image"></div>
-
-                        <div class="story-content">
-
-                            <span class="category">
-                                اخبار
-                            </span>
-
-                            <h2>
-                                مهم‌ترین خبرهای امروز سینما
-                            </h2>
-
-                        </div>
-
-                    </article>
-
+                    {% endfor %}
 
                 </div>
 
@@ -256,9 +312,13 @@
 
         </section>
 
+        {% endif %}
 
 
-        <!-- LATEST -->
+
+        <!-- =====================
+             LATEST NEWS
+        ====================== -->
 
         <section class="section">
 
@@ -276,77 +336,47 @@
 
                 <div class="news-grid">
 
+                    {% for article in persian_articles limit:6 %}
 
-                    <article class="news-card">
+                    <a
+                        href="{{ article.url | relative_url }}"
+                        class="news-card"
+                    >
+
+                        {% if article.image %}
+
+                        <img
+                            src="{{ article.image | relative_url }}"
+                            alt="{{ article.title }}"
+                            class="article-card-image"
+                        >
+
+                        {% else %}
 
                         <div class="card-image"></div>
+
+                        {% endif %}
+
 
                         <div class="card-content">
 
                             <span class="category">
-                                سینما
+                                {{ article.category }}
                             </span>
 
                             <h3>
-                                تازه‌ترین اخبار سینمای ایران و جهان
+                                {{ article.title }}
                             </h3>
 
                             <p>
-                                مهم‌ترین اتفاقات روز دنیای سینما را دنبال کنید.
+                                {{ article.summary }}
                             </p>
 
                         </div>
 
-                    </article>
+                    </a>
 
-
-
-                    <article class="news-card">
-
-                        <div class="card-image"></div>
-
-                        <div class="card-content">
-
-                            <span class="category">
-                                تلویزیون
-                            </span>
-
-                            <h3>
-                                خبرهای تازه سریال‌ها
-                            </h3>
-
-                            <p>
-                                تازه‌ترین اتفاقات تلویزیون و شبکه نمایش خانگی.
-                            </p>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="news-card">
-
-                        <div class="card-image"></div>
-
-                        <div class="card-content">
-
-                            <span class="category">
-                                گیشه
-                            </span>
-
-                            <h3>
-                                آخرین وضعیت فروش فیلم‌ها
-                            </h3>
-
-                            <p>
-                                گزارش تازه از فروش فیلم‌های روی پرده.
-                            </p>
-
-                        </div>
-
-                    </article>
-
+                    {% endfor %}
 
                 </div>
 
@@ -356,11 +386,160 @@
         </section>
 
 
+
+        <!-- =====================
+             FILM
+        ====================== -->
+
+        {% assign film_articles = persian_articles
+            | where: "category", "Film"
+        %}
+
+        {% if film_articles.size > 0 %}
+
+        <section class="section gray-section">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+                    <h2>
+                        سینما
+                    </h2>
+
+                </div>
+
+
+                <div class="feature-grid">
+
+                    {% for article in film_articles limit:2 %}
+
+                    <a
+                        href="{{ article.url | relative_url }}"
+                        class="feature-card"
+                    >
+
+                        {% if article.image %}
+
+                        <div
+                            class="large-image"
+                            style="
+                                background-image:
+                                url('{{ article.image | relative_url }}');
+
+                                background-size: cover;
+                                background-position: center;
+                            "
+                        ></div>
+
+                        {% else %}
+
+                        <div class="large-image"></div>
+
+                        {% endif %}
+
+                        <span class="category">
+                            {{ article.category }}
+                        </span>
+
+                        <h2>
+                            {{ article.title }}
+                        </h2>
+
+                    </a>
+
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+
+        <!-- =====================
+             TV
+        ====================== -->
+
+        {% assign tv_articles = persian_articles
+            | where: "category", "TV"
+        %}
+
+        {% if tv_articles.size > 0 %}
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+                    <h2>
+                        تلویزیون
+                    </h2>
+
+                </div>
+
+
+                <div class="tv-grid">
+
+                    {% for article in tv_articles limit:3 %}
+
+                    <a href="{{ article.url | relative_url }}">
+
+                        {% if article.image %}
+
+                        <div
+                            class="small-image"
+                            style="
+                                background-image:
+                                url('{{ article.image | relative_url }}');
+
+                                background-size: cover;
+                                background-position: center;
+                            "
+                        ></div>
+
+                        {% else %}
+
+                        <div class="small-image"></div>
+
+                        {% endif %}
+
+                        <span class="category">
+                            {{ article.category }}
+                        </span>
+
+                        <h3>
+                            {{ article.title }}
+                        </h3>
+
+                    </a>
+
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
     </main>
 
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer>
 
