@@ -1,0 +1,150 @@
+---
+layout: null
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reviews | CinemaDaily</title>
+
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+
+            <div class="language">
+                <a href="{{ '/index.html' | relative_url }}">EN</a>
+                <span>|</span>
+                <a href="{{ '/fa.html' | relative_url }}">فارسی</a>
+            </div>
+
+            <div class="top-links">
+                <a href="#">Instagram</a>
+                <a href="#">Telegram</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Search</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="container logo-row">
+
+            <a href="{{ '/index.html' | relative_url }}" class="logo">
+                CINEMA<span>DAILY</span>
+            </a>
+
+        </div>
+
+        <nav>
+
+            <div class="container nav-inner">
+
+                <a href="{{ '/news.html' | relative_url }}">NEWS</a>
+                <a href="{{ '/film.html' | relative_url }}">FILM</a>
+                <a href="{{ '/tv.html' | relative_url }}">TV</a>
+                <a href="{{ '/reviews.html' | relative_url }}">REVIEWS</a>
+                <a href="#">BOX OFFICE</a>
+                <a href="#">AWARDS</a>
+                <a href="#">TRAILERS</a>
+                <a href="#">FEATURES</a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-header">
+                    <h1>Reviews</h1>
+                </div>
+
+
+                <div class="news-grid">
+
+                    {% assign review_articles = site.articles | where: "category", "Reviews" | sort: "date" | reverse %}
+
+                    {% for article in review_articles %}
+
+                    <a href="{{ article.url | relative_url }}" class="news-card">
+
+                        {% if article.image %}
+
+                        <img
+                            src="{{ article.image | relative_url }}"
+                            alt="{{ article.title }}"
+                            class="card-image article-card-image"
+                        >
+
+                        {% else %}
+
+                        <div class="card-image"></div>
+
+                        {% endif %}
+
+                        <div class="card-content">
+
+                            <span class="category">
+                                {{ article.category }}
+                            </span>
+
+                            <h3>
+                                {{ article.title }}
+                            </h3>
+
+                            <p>
+                                {{ article.summary }}
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="container footer-inner">
+
+            <div class="footer-logo">
+                CINEMA<span>DAILY</span>
+            </div>
+
+            <p>
+                Film, television and entertainment news from around the world.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
