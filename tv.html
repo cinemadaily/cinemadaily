@@ -11,55 +11,60 @@ layout: null
 
     <title>TV | CinemaDaily</title>
 
+    <meta
+        name="description"
+        content="Latest television and streaming news from CinemaDaily."
+    >
+
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
 </head>
 
 <body>
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
-        <div class="container top-bar-inner">
+    <header class="site-header">
 
-            <div class="language">
-                <a href="{{ '/index.html' | relative_url }}">EN</a>
-                <span>|</span>
-                <a href="{{ '/fa.html' | relative_url }}">فارسی</a>
+        <div class="header-main">
+
+            <div class="header-logo">
+                <a href="{{ '/index.html' | relative_url }}">
+                    <img
+                        src="{{ '/images/logo2.jpeg' | relative_url }}"
+                        alt="CinemaDaily"
+                    >
+                </a>
             </div>
 
-            <div class="top-links">
-                <a href="#">Instagram</a>
-                <a href="#">Telegram</a>
-                <a href="#">WhatsApp</a>
-                <a href="#">Search</a>
+            <div class="container header-bottom">
+
+                <div class="language">
+                    <a href="{{ '/index.html' | relative_url }}" class="active">EN</a>
+                    <span>|</span>
+                    <a href="{{ '/fa.html' | relative_url }}">فارسی</a>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">Telegram</a>
+                    <a href="#" target="_blank">WhatsApp</a>
+                    <a href="#">Search</a>
+                </div>
+
             </div>
 
         </div>
-    </div>
 
-
-    <!-- HEADER -->
-    <header>
-
-        <div class="container logo-row">
-
-            <a href="{{ '/index.html' | relative_url }}" class="logo">
-                CINEMA<span>DAILY</span>
-            </a>
-
-        </div>
-
-        <nav>
+        <nav class="main-nav">
 
             <div class="container nav-inner">
 
                 <a href="{{ '/news.html' | relative_url }}">NEWS</a>
                 <a href="{{ '/film.html' | relative_url }}">FILM</a>
                 <a href="{{ '/tv.html' | relative_url }}">TV</a>
-                <a href="#">REVIEWS</a>
-                <a href="#">BOX OFFICE</a>
-                <a href="#">AWARDS</a>
-                <a href="#">TRAILERS</a>
-                <a href="#">FEATURES</a>
+                <a href="{{ '/reviews.html' | relative_url }}">REVIEWS</a>
+                <a href="{{ '/box-office.html' | relative_url }}">BOX OFFICE</a>
+                <a href="{{ '/awards.html' | relative_url }}">AWARDS</a>
+                <a href="{{ '/trailers.html' | relative_url }}">TRAILERS</a>
+                <a href="{{ '/features.html' | relative_url }}">FEATURES</a>
 
             </div>
 
@@ -78,14 +83,16 @@ layout: null
                     <h1>TV</h1>
                 </div>
 
-
                 <div class="news-grid">
 
                     {% assign tv_articles = site.articles | where: "category", "TV" | sort: "date" | reverse %}
 
                     {% for article in tv_articles %}
 
-                    <a href="{{ article.url | relative_url }}" class="news-card">
+                    <a
+                        href="{{ article.url | relative_url }}"
+                        class="news-card"
+                    >
 
                         {% if article.image %}
 
@@ -141,6 +148,16 @@ layout: null
             <p>
                 Film, television and entertainment news from around the world.
             </p>
+
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy</a>
+            </div>
+
+            <div class="copyright">
+                © 2026 CinemaDaily. All rights reserved.
+            </div>
 
         </div>
 
