@@ -1,0 +1,469 @@
+---
+layout: null
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Search | CinemaDaily</title>
+
+    <meta
+        name="description"
+        content="Search CinemaDaily for film, television and entertainment news."
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ '/style.css' | relative_url }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+
+        <div class="header-main">
+
+
+            <div class="header-logo">
+
+                <a href="{{ '/index.html' | relative_url }}">
+
+                    <img
+                        src="{{ '/images/logo2.jpeg' | relative_url }}"
+                        alt="CinemaDaily"
+                    >
+
+                </a>
+
+            </div>
+
+
+            <div class="container header-bottom">
+
+
+                <div class="language">
+
+                    <a
+                        href="{{ '/index.html' | relative_url }}"
+                        class="active"
+                    >
+                        EN
+                    </a>
+
+                    <span>|</span>
+
+                    <a href="{{ '/fa.html' | relative_url }}">
+                        فارسی
+                    </a>
+
+                </div>
+
+
+                <div class="social-links">
+
+                    <a
+                        href="https://www.instagram.com/cinemadaily"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Instagram
+                    </a>
+
+                    <a
+                        href="https://t.me/cinemadaily"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Telegram
+                    </a>
+
+                    <a
+                        href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        WhatsApp
+                    </a>
+
+                    <a
+                        href="https://m.youtube.com/cinemadailytv?ra=m"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        YouTube
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <nav class="main-nav">
+
+            <div class="container nav-inner">
+
+                <a href="{{ '/news.html' | relative_url }}">NEWS</a>
+                <a href="{{ '/film.html' | relative_url }}">FILM</a>
+                <a href="{{ '/tv.html' | relative_url }}">TV</a>
+                <a href="{{ '/reviews.html' | relative_url }}">REVIEWS</a>
+                <a href="{{ '/box-office.html' | relative_url }}">BOX OFFICE</a>
+                <a href="{{ '/awards.html' | relative_url }}">AWARDS</a>
+                <a href="{{ '/trailers.html' | relative_url }}">TRAILERS</a>
+                <a href="{{ '/features.html' | relative_url }}">FEATURES</a>
+
+            </div>
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- SEARCH -->
+
+    <main class="search-page">
+
+        <div class="container">
+
+
+            <div class="search-heading">
+
+                <span class="category">
+                    CINEMADAILY
+                </span>
+
+                <h1>
+                    Search
+                </h1>
+
+                <p>
+                    Search articles, films, television and entertainment news.
+                </p>
+
+            </div>
+
+
+            <div class="search-box">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search CinemaDaily..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="searchButton"
+                >
+                    Search
+                </button>
+
+            </div>
+
+
+            <div
+                class="search-status"
+                id="searchStatus"
+            >
+                Type something to search CinemaDaily.
+            </div>
+
+
+            <div
+                class="search-results"
+                id="searchResults"
+            ></div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container footer-inner">
+
+
+            <div class="footer-logo">
+                CINEMA<span>DAILY</span>
+            </div>
+
+
+            <p>
+                Film, television and entertainment news from around the world.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a
+                    href="https://www.instagram.com/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="https://t.me/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Telegram
+                </a>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://m.youtube.com/cinemadailytv?ra=m"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    YouTube
+                </a>
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 CinemaDaily. All rights reserved.
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+        let cinemaDailyArticles = [];
+
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const searchButton =
+            document.getElementById("searchButton");
+
+        const searchResults =
+            document.getElementById("searchResults");
+
+        const searchStatus =
+            document.getElementById("searchStatus");
+
+
+        fetch("{{ '/search.json' | relative_url }}")
+            .then(response => response.json())
+            .then(data => {
+
+                cinemaDailyArticles = data;
+
+            })
+            .catch(error => {
+
+                searchStatus.textContent =
+                    "Search data could not be loaded.";
+
+                console.error(error);
+
+            });
+
+
+
+        function escapeHTML(value) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent = value || "";
+
+            return div.innerHTML;
+
+        }
+
+
+
+        function runSearch() {
+
+            const query =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            searchResults.innerHTML = "";
+
+
+            if (!query) {
+
+                searchStatus.textContent =
+                    "Type something to search CinemaDaily.";
+
+                return;
+
+            }
+
+
+            const results =
+                cinemaDailyArticles.filter(article => {
+
+                    const searchableText = [
+
+                        article.title,
+                        article.summary,
+                        article.category
+
+                    ]
+                    .join(" ")
+                    .toLowerCase();
+
+
+                    return searchableText.includes(query);
+
+                });
+
+
+
+            if (results.length === 0) {
+
+                searchStatus.textContent =
+                    "No results found.";
+
+                return;
+
+            }
+
+
+            searchStatus.textContent =
+                results.length +
+                (results.length === 1
+                    ? " result"
+                    : " results");
+
+
+            results.forEach(article => {
+
+                const result =
+                    document.createElement("a");
+
+
+                result.href =
+                    article.url;
+
+
+                result.className =
+                    "search-result-card";
+
+
+                result.innerHTML = `
+
+                    <div class="search-result-meta">
+
+                        <span class="category">
+                            ${escapeHTML(article.category)}
+                        </span>
+
+                        <span>
+                            ${escapeHTML(article.date)}
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        ${escapeHTML(article.title)}
+                    </h2>
+
+
+                    <p>
+                        ${escapeHTML(article.summary)}
+                    </p>
+
+                `;
+
+
+                searchResults.appendChild(result);
+
+            });
+
+        }
+
+
+
+        searchButton.addEventListener(
+            "click",
+            runSearch
+        );
+
+
+        searchInput.addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Enter") {
+
+                    runSearch();
+
+                }
+
+            }
+        );
+
+
+        searchInput.addEventListener(
+            "input",
+            () => {
+
+                if (
+                    searchInput.value
+                        .trim()
+                        .length >= 2
+                ) {
+
+                    runSearch();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
