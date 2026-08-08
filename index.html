@@ -32,17 +32,13 @@ layout: null
 <body>
 
 
-    <!-- =====================================
-         HEADER
-    ====================================== -->
+    <!-- HEADER -->
 
     <header class="site-header">
 
 
         <div class="header-main">
 
-
-            <!-- LOGO -->
 
             <div class="header-logo">
 
@@ -57,8 +53,6 @@ layout: null
 
             </div>
 
-
-            <!-- LANGUAGE + SOCIAL -->
 
             <div class="container header-bottom">
 
@@ -115,7 +109,7 @@ layout: null
                         YouTube
                     </a>
 
-                    <a href="#">
+                    <a href="{{ '/search.html' | relative_url }}">
                         Search
                     </a>
 
@@ -175,9 +169,7 @@ layout: null
 
 
 
-    <!-- =====================================
-         PREPARE CMS CONTENT
-    ====================================== -->
+    <!-- CMS -->
 
     {% assign english_articles = site.articles
         | where: "language", "en"
@@ -189,16 +181,10 @@ layout: null
 
 
 
-    <!-- =====================================
-         MAIN
-    ====================================== -->
-
     <main>
 
 
-        <!-- =================================
-             HERO
-        ================================== -->
+        <!-- HERO -->
 
         {% if featured %}
 
@@ -206,8 +192,6 @@ layout: null
 
             <div class="container hero-grid">
 
-
-                <!-- MAIN FEATURED STORY -->
 
                 <a
                     href="{{ featured.url | relative_url }}"
@@ -238,7 +222,9 @@ layout: null
 
                     </div>
 
+
                     {% else %}
+
 
                     <div class="hero-image">
 
@@ -247,6 +233,7 @@ layout: null
                         </div>
 
                     </div>
+
 
                     {% endif %}
 
@@ -272,12 +259,11 @@ layout: null
 
 
 
-                <!-- SIDE STORIES -->
-
                 <div class="side-stories">
 
 
                     {% for article in english_articles offset:1 limit:2 %}
+
 
                     <a
                         href="{{ article.url | relative_url }}"
@@ -298,9 +284,12 @@ layout: null
                             "
                         ></div>
 
+
                         {% else %}
 
+
                         <div class="story-image"></div>
+
 
                         {% endif %}
 
@@ -320,6 +309,7 @@ layout: null
 
                     </a>
 
+
                     {% endfor %}
 
 
@@ -330,13 +320,12 @@ layout: null
 
         </section>
 
+
         {% endif %}
 
 
 
-        <!-- =================================
-             LATEST NEWS
-        ================================== -->
+        <!-- LATEST NEWS -->
 
         <section class="section">
 
@@ -361,6 +350,7 @@ layout: null
 
                     {% for article in english_articles limit:6 %}
 
+
                     <a
                         href="{{ article.url | relative_url }}"
                         class="news-card"
@@ -369,37 +359,46 @@ layout: null
 
                         {% if article.image %}
 
+
                         <img
                             src="{{ article.image | relative_url }}"
                             alt="{{ article.title }}"
                             class="article-card-image"
                         >
 
+
                         {% else %}
 
+
                         <div class="card-image"></div>
+
 
                         {% endif %}
 
 
                         <div class="card-content">
 
+
                             <span class="category">
                                 {{ article.category }}
                             </span>
+
 
                             <h3>
                                 {{ article.title }}
                             </h3>
 
+
                             <p>
                                 {{ article.summary }}
                             </p>
+
 
                         </div>
 
 
                     </a>
+
 
                     {% endfor %}
 
@@ -413,9 +412,7 @@ layout: null
 
 
 
-        <!-- =================================
-             FILM
-        ================================== -->
+        <!-- FILM -->
 
         {% assign film_articles = english_articles
             | where: "category", "Film"
@@ -423,6 +420,7 @@ layout: null
 
 
         {% if film_articles.size > 0 %}
+
 
         <section class="section gray-section">
 
@@ -447,6 +445,7 @@ layout: null
 
                     {% for article in film_articles limit:2 %}
 
+
                     <a
                         href="{{ article.url | relative_url }}"
                         class="feature-card"
@@ -454,6 +453,7 @@ layout: null
 
 
                         {% if article.image %}
+
 
                         <div
                             class="large-image"
@@ -466,9 +466,12 @@ layout: null
                             "
                         ></div>
 
+
                         {% else %}
 
+
                         <div class="large-image"></div>
+
 
                         {% endif %}
 
@@ -477,12 +480,14 @@ layout: null
                             {{ article.category }}
                         </span>
 
+
                         <h2>
                             {{ article.title }}
                         </h2>
 
 
                     </a>
+
 
                     {% endfor %}
 
@@ -494,13 +499,12 @@ layout: null
 
         </section>
 
+
         {% endif %}
 
 
 
-        <!-- =================================
-             TV
-        ================================== -->
+        <!-- TV -->
 
         {% assign tv_articles = english_articles
             | where: "category", "TV"
@@ -508,6 +512,7 @@ layout: null
 
 
         {% if tv_articles.size > 0 %}
+
 
         <section class="section">
 
@@ -532,12 +537,12 @@ layout: null
 
                     {% for article in tv_articles limit:3 %}
 
-                    <a
-                        href="{{ article.url | relative_url }}"
-                    >
+
+                    <a href="{{ article.url | relative_url }}">
 
 
                         {% if article.image %}
+
 
                         <div
                             class="small-image"
@@ -550,9 +555,12 @@ layout: null
                             "
                         ></div>
 
+
                         {% else %}
 
+
                         <div class="small-image"></div>
+
 
                         {% endif %}
 
@@ -561,12 +569,14 @@ layout: null
                             {{ article.category }}
                         </span>
 
+
                         <h3>
                             {{ article.title }}
                         </h3>
 
 
                     </a>
+
 
                     {% endfor %}
 
@@ -578,6 +588,7 @@ layout: null
 
         </section>
 
+
         {% endif %}
 
 
@@ -585,9 +596,7 @@ layout: null
 
 
 
-    <!-- =====================================
-         FOOTER
-    ====================================== -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -606,6 +615,7 @@ layout: null
 
             <div class="footer-links">
 
+
                 <a
                     href="https://www.instagram.com/cinemadaily"
                     target="_blank"
@@ -613,6 +623,7 @@ layout: null
                 >
                     Instagram
                 </a>
+
 
                 <a
                     href="https://t.me/cinemadaily"
@@ -622,6 +633,7 @@ layout: null
                     Telegram
                 </a>
 
+
                 <a
                     href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
                     target="_blank"
@@ -630,6 +642,7 @@ layout: null
                     WhatsApp
                 </a>
 
+
                 <a
                     href="https://m.youtube.com/cinemadailytv?ra=m"
                     target="_blank"
@@ -637,6 +650,7 @@ layout: null
                 >
                     YouTube
                 </a>
+
 
             </div>
 
