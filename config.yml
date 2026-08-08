@@ -1,0 +1,14 @@
+itle: CinemaDaily
+description: Film, television and entertainment news from CinemaDaily.
+url: "https://cinemadaily.github.io"
+baseurl: "/cinemadaily"
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: "content"
+    values:
+      layout: article
