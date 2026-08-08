@@ -585,3 +585,73 @@ footer {
     width: 100%;
     object-fit: cover;
 }
+/* ========================================
+   CINEMADAILY LOGO HEADER
+======================================== */
+
+.site-header {
+    background: #6c2bd9;
+}
+
+.cinemadaily-logo-banner {
+    width: 100%;
+    background: #6c2bd9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.cinemadaily-logo-banner a {
+    display: block;
+    width: 100%;
+}
+
+.cinemadaily-logo-image {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Navigation under logo */
+
+.site-header nav {
+    background: #4b1fa8;
+}
+
+.site-header .nav-inner {
+    min-height: 58px;
+}
+
+.site-header .nav-inner a {
+    color: #ffffff;
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .cinemadaily-logo-image {
+        height: 180px;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .cinemadaily-logo-image {
+        height: 125px;
+    }
+
+    .site-header .nav-inner {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+}
