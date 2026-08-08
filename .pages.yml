@@ -5,7 +5,7 @@ media:
 content:
   - name: posts
     label: Articles
-    path: content
+  path: _articles
     type: collection
 
     fields:
