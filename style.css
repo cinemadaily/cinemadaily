@@ -427,3 +427,139 @@ footer {
     }
 
 }
+/* ARTICLE PAGE */
+
+.article-page {
+    padding: 65px 0 80px;
+}
+
+.article-category {
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.article-title {
+    max-width: 950px;
+    font-size: 56px;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+}
+
+.article-excerpt {
+    max-width: 800px;
+    color: var(--text-light);
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #777777;
+    font-size: 13px;
+    margin-bottom: 35px;
+}
+
+.article-hero {
+    width: 100%;
+    height: 600px;
+    margin-bottom: 45px;
+    background: linear-gradient(
+        135deg,
+        #2b155c,
+        #111111
+    );
+}
+
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 70px;
+    max-width: 1100px;
+}
+
+.article-content {
+    font-size: 18px;
+    line-height: 2;
+}
+
+.article-content p {
+    margin-bottom: 25px;
+}
+
+.article-content h2 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 45px 0 20px;
+}
+
+
+/* ARTICLE SIDEBAR */
+
+.article-sidebar {
+    border-top: 3px solid var(--black);
+    align-self: start;
+}
+
+.sidebar-title {
+    font-size: 22px;
+    font-weight: 800;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-story {
+    display: block;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+}
+
+.sidebar-story:hover {
+    color: var(--purple);
+}
+
+
+/* ARTICLE MOBILE */
+
+@media (max-width: 768px) {
+
+    .article-page {
+        padding: 40px 0 60px;
+    }
+
+    .article-title {
+        font-size: 36px;
+        letter-spacing: -0.5px;
+    }
+
+    .article-excerpt {
+        font-size: 17px;
+    }
+
+    .article-hero {
+        height: 330px;
+        margin-bottom: 35px;
+    }
+
+    .article-layout {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .article-content {
+        font-size: 17px;
+        line-height: 1.9;
+    }
+
+    .article-content h2 {
+        font-size: 27px;
+    }
+
+}
