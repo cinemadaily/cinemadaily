@@ -666,3 +666,156 @@ footer {
     }
 
 }
+/* ========================================
+   CINEMADAILY FINAL HEADER
+======================================== */
+
+.site-header {
+    width: 100%;
+    background: #5b168f;
+}
+
+
+/* LOGO */
+
+.logo-banner {
+    width: 100%;
+    height: 145px;
+    background: #5b168f;
+    overflow: hidden;
+}
+
+.logo-banner a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-banner-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* LANGUAGE + SOCIAL */
+
+.header-info {
+    background: #5b168f;
+    color: #ffffff;
+}
+
+.header-info-inner {
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-info a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.header-info .language {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.social-links a {
+    font-size: 14px;
+}
+
+
+/* NAVIGATION */
+
+.main-nav {
+    background: #4b1fa8;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.main-nav .nav-inner {
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 42px;
+}
+
+.main-nav .nav-inner a {
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.main-nav .nav-inner a:hover {
+    opacity: 0.75;
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .logo-banner {
+        height: 120px;
+    }
+
+    .main-nav .nav-inner {
+        justify-content: flex-start;
+        overflow-x: auto;
+        gap: 28px;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .logo-banner {
+        height: 90px;
+    }
+
+    .header-info-inner {
+        height: auto;
+        min-height: 44px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-links a {
+        font-size: 11px;
+    }
+
+    .main-nav .nav-inner {
+        height: 46px;
+        gap: 22px;
+    }
+
+    .main-nav .nav-inner a {
+        font-size: 12px;
+    }
+
+}
