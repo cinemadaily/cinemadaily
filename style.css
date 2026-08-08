@@ -586,43 +586,54 @@ footer {
     object-fit: cover;
 }
 /* ========================================
-   CINEMADAILY LOGO HEADER
+   CINEMADAILY LOGO HEADER - COMPACT
 ======================================== */
 
 .site-header {
-    background: #6c2bd9;
+    background: #5b238f;
 }
+
+/* Logo strip */
 
 .cinemadaily-logo-banner {
     width: 100%;
-    background: #6c2bd9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 150px;
+    background: #5b238f;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cinemadaily-logo-banner a {
     display: block;
     width: 100%;
+    height: 100%;
 }
 
 .cinemadaily-logo-image {
     display: block;
     width: 100%;
-    height: 230px;
+    height: 100%;
     object-fit: cover;
-    object-position: center;
+
+    /*
+    This crops the large white space
+    from the original uploaded image
+    */
+    object-position: center 51%;
 }
 
-/* Navigation under logo */
+/* Navigation */
 
 .site-header nav {
     background: #4b1fa8;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    border-bottom: none;
 }
 
 .site-header .nav-inner {
-    min-height: 58px;
+    min-height: 50px;
 }
 
 .site-header .nav-inner a {
@@ -634,8 +645,8 @@ footer {
 
 @media (max-width: 900px) {
 
-    .cinemadaily-logo-image {
-        height: 180px;
+    .cinemadaily-logo-banner {
+        height: 125px;
     }
 
 }
@@ -645,8 +656,8 @@ footer {
 
 @media (max-width: 600px) {
 
-    .cinemadaily-logo-image {
-        height: 125px;
+    .cinemadaily-logo-banner {
+        height: 95px;
     }
 
     .site-header .nav-inner {
