@@ -24,6 +24,8 @@ content:
             - Reviews
             - Box Office
             - Awards
+            - Trailers
+            - Features
 
       - name: language
         label: Language
