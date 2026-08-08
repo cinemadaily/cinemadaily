@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="{{ page.language | default: 'en' }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ page.title }} | CinemaDaily</title>
+
+    <meta name="description" content="{{ page.summary }}">
+
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+
+            <div class="language">
+                <a href="{{ '/index.html' | relative_url }}">EN</a>
+                <span>|</span>
+                <a href="{{ '/fa.html' | relative_url }}">فارسی</a>
+            </div>
+
+            <div class="top-links">
+                <a href="#">Instagram</a>
+                <a href="#">Telegram</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Search</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="container logo-row">
+
+            <a href="{{ '/index.html' | relative_url }}" class="logo">
+                CINEMA<span>DAILY</span>
+            </a>
+
+        </div>
+
+        <nav>
+
+            <div class="container nav-inner">
+
+                <a href="{{ '/index.html' | relative_url }}">NEWS</a>
+                <a href="#">FILM</a>
+                <a href="#">TV</a>
+                <a href="#">REVIEWS</a>
+                <a href="#">BOX OFFICE</a>
+                <a href="#">AWARDS</a>
+                <a href="#">TRAILERS</a>
+                <a href="#">FEATURES</a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ARTICLE -->
+    <main class="article-page">
+
+        <div class="container">
+
+            <div class="article-category">
+                {{ page.category }}
+            </div>
+
+            <h1 class="article-title">
+                {{ page.title }}
+            </h1>
+
+            <p class="article-excerpt">
+                {{ page.summary }}
+            </p>
+
+            <div class="article-meta">
+
+                <span>By CinemaDaily</span>
+
+                <span>•</span>
+
+                <span>
+                    {{ page.date | date: "%B %d, %Y" }}
+                </span>
+
+            </div>
+
+
+            {% if page.image %}
+
+            <img
+                src="{{ page.image | relative_url }}"
+                alt="{{ page.title }}"
+                class="article-main-image"
+            >
+
+            {% else %}
+
+            <div class="article-hero"></div>
+
+            {% endif %}
+
+
+            <div class="article-layout">
+
+                <article class="article-content">
+
+                    {{ content }}
+
+                </article>
+
+
+                <aside class="article-sidebar">
+
+                    <div class="sidebar-title">
+                        Latest News
+                    </div>
+
+                    {% assign latest_articles = site.articles | sort: "date" | reverse %}
+
+                    {% for article in latest_articles limit:3 %}
+
+                    <a href="{{ article.url | relative_url }}" class="sidebar-story">
+
+                        <span class="category">
+                            {{ article.category }}
+                        </span>
+
+                        <strong>
+                            {{ article.title }}
+                        </strong>
+
+                    </a>
+
+                    {% endfor %}
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="container footer-inner">
+
+            <div class="footer-logo">
+                CINEMA<span>DAILY</span>
+            </div>
+
+            <p>
+                Film, television and entertainment news from around the world.
+            </p>
+
+            <div class="footer-links">
+                <a href="#">Contact</a>
+                <a href="#">About</a>
+                <a href="#">Privacy</a>
+            </div>
+
+            <div class="copyright">
+                © 2026 CinemaDaily. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
