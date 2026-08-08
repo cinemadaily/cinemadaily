@@ -1,0 +1,20 @@
+---
+layout: null
+---
+
+[
+{% assign articles = site.articles | sort: "date" | reverse %}
+
+{% for article in articles %}
+
+{
+    "title": {{ article.title | jsonify }},
+    "summary": {{ article.summary | default: "" | jsonify }},
+    "category": {{ article.category | default: "" | jsonify }},
+    "language": {{ article.language | default: "en" | jsonify }},
+    "url": {{ article.url | relative_url | jsonify }},
+    "date": {{ article.date | date: "%Y-%m-%d" | jsonify }}
+}{% unless forloop.last %},{% endunless %}
+
+{% endfor %}
+]
