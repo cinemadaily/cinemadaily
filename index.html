@@ -473,4 +473,214 @@ layout: null
                         <div class="large-image"></div>
 
 
-                        {% endif
+                        {% endif %}
+
+
+                        <span class="category">
+                            {{ article.category }}
+                        </span>
+
+
+                        <h2>
+                            {{ article.title }}
+                        </h2>
+
+
+                    </a>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        {% endif %}
+
+
+
+        <!-- TV -->
+
+        {% assign tv_articles = english_articles
+            | where: "category", "TV"
+        %}
+
+
+        {% if tv_articles.size > 0 %}
+
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+                    <h2>
+                        TV
+                    </h2>
+
+                    <a href="{{ '/tv.html' | relative_url }}">
+                        View All →
+                    </a>
+
+                </div>
+
+
+                <div class="tv-grid">
+
+
+                    {% for article in tv_articles limit:3 %}
+
+
+                    <a href="{{ article.url | relative_url }}">
+
+
+                        {% if article.image %}
+
+
+                        <div
+                            class="small-image"
+                            style="
+                                background-image:
+                                url('{{ article.image | relative_url }}');
+
+                                background-size: cover;
+                                background-position: center;
+                            "
+                        ></div>
+
+
+                        {% else %}
+
+
+                        <div class="small-image"></div>
+
+
+                        {% endif %}
+
+
+                        <span class="category">
+                            {{ article.category }}
+                        </span>
+
+
+                        <h3>
+                            {{ article.title }}
+                        </h3>
+
+
+                    </a>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        {% endif %}
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container footer-inner">
+
+
+            <div class="footer-logo">
+                CINEMA<span>DAILY</span>
+            </div>
+
+
+            <p>
+                Film, television and entertainment news from around the world.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a href="{{ '/about.html' | relative_url }}">
+                    About
+                </a>
+
+                <a href="{{ '/contact.html' | relative_url }}">
+                    Contact
+                </a>
+
+                <a href="{{ '/privacy.html' | relative_url }}">
+                    Privacy
+                </a>
+
+                <a href="{{ '/search.html' | relative_url }}">
+                    Search
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a
+                    href="https://www.instagram.com/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="https://t.me/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Telegram
+                </a>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://m.youtube.com/cinemadailytv?ra=m"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    YouTube
+                </a>
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 CinemaDaily. All rights reserved.
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
