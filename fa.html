@@ -21,6 +21,19 @@ layout: null
         content="آخرین اخبار سینما، تلویزیون، گیشه و سرگرمی در سینمادیلی."
     >
 
+    <!-- FAVICON -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="{{ '/images/favicon.png' | relative_url }}"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        href="{{ '/images/favicon.png' | relative_url }}"
+    >
+
     <link
         rel="stylesheet"
         href="{{ '/style.css' | relative_url }}"
@@ -32,9 +45,7 @@ layout: null
 <body class="rtl-page">
 
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+    <!-- HEADER -->
 
     <header class="site-header">
 
@@ -111,6 +122,10 @@ layout: null
                         YouTube
                     </a>
 
+                    <a href="{{ '/search.html' | relative_url }}">
+                        جست‌وجو
+                    </a>
+
                 </div>
 
 
@@ -120,39 +135,41 @@ layout: null
         </div>
 
 
+        <!-- NAVIGATION -->
+
         <nav class="main-nav">
 
             <div class="container nav-inner">
 
-                <a href="#">
+                <a href="{{ '/news.html' | relative_url }}">
                     اخبار
                 </a>
 
-                <a href="#">
+                <a href="{{ '/film.html' | relative_url }}">
                     سینما
                 </a>
 
-                <a href="#">
+                <a href="{{ '/tv.html' | relative_url }}">
                     تلویزیون
                 </a>
 
-                <a href="#">
+                <a href="{{ '/reviews.html' | relative_url }}">
                     نقد و بررسی
                 </a>
 
-                <a href="#">
+                <a href="{{ '/box-office.html' | relative_url }}">
                     گیشه
                 </a>
 
-                <a href="#">
+                <a href="{{ '/awards.html' | relative_url }}">
                     جوایز
                 </a>
 
-                <a href="#">
+                <a href="{{ '/trailers.html' | relative_url }}">
                     تریلرها
                 </a>
 
-                <a href="#">
+                <a href="{{ '/features.html' | relative_url }}">
                     ویژه
                 </a>
 
@@ -165,9 +182,7 @@ layout: null
 
 
 
-    <!-- =========================
-         PREPARE CMS CONTENT
-    ========================== -->
+    <!-- CMS -->
 
     {% assign persian_articles = site.articles
         | where: "language", "fa"
@@ -179,16 +194,10 @@ layout: null
 
 
 
-    <!-- =========================
-         MAIN
-    ========================== -->
-
     <main>
 
 
-        <!-- =====================
-             HERO
-        ====================== -->
+        <!-- HERO -->
 
         {% if featured %}
 
@@ -226,7 +235,9 @@ layout: null
 
                     </div>
 
+
                     {% else %}
+
 
                     <div class="hero-image">
 
@@ -235,6 +246,7 @@ layout: null
                         </div>
 
                     </div>
+
 
                     {% endif %}
 
@@ -249,9 +261,13 @@ layout: null
                             {{ featured.title }}
                         </h1>
 
+                        {% if featured.summary %}
+
                         <p>
                             {{ featured.summary }}
                         </p>
+
+                        {% endif %}
 
                     </div>
 
@@ -262,12 +278,15 @@ layout: null
 
                 <div class="side-stories">
 
+
                     {% for article in persian_articles offset:1 limit:2 %}
+
 
                     <a
                         href="{{ article.url | relative_url }}"
                         class="story"
                     >
+
 
                         {% if article.image %}
 
@@ -282,9 +301,12 @@ layout: null
                             "
                         ></div>
 
+
                         {% else %}
 
+
                         <div class="story-image"></div>
+
 
                         {% endif %}
 
@@ -301,9 +323,12 @@ layout: null
 
                         </div>
 
+
                     </a>
 
+
                     {% endfor %}
+
 
                 </div>
 
@@ -312,13 +337,12 @@ layout: null
 
         </section>
 
+
         {% endif %}
 
 
 
-        <!-- =====================
-             LATEST NEWS
-        ====================== -->
+        <!-- LATEST NEWS -->
 
         <section class="section">
 
@@ -336,19 +360,23 @@ layout: null
 
                 <div class="news-grid">
 
+
                     {% for article in persian_articles limit:6 %}
+
 
                     <a
                         href="{{ article.url | relative_url }}"
                         class="news-card"
                     >
 
+
                         {% if article.image %}
 
                         <img
                             src="{{ article.image | relative_url }}"
-                            alt="{{ article.title }}"
+                            alt="{{ article.title | escape }}"
                             class="article-card-image"
+                            loading="lazy"
                         >
 
                         {% else %}
@@ -360,23 +388,34 @@ layout: null
 
                         <div class="card-content">
 
+
                             <span class="category">
                                 {{ article.category }}
                             </span>
+
 
                             <h3>
                                 {{ article.title }}
                             </h3>
 
+
+                            {% if article.summary %}
+
                             <p>
                                 {{ article.summary }}
                             </p>
 
+                            {% endif %}
+
+
                         </div>
+
 
                     </a>
 
+
                     {% endfor %}
+
 
                 </div>
 
@@ -387,15 +426,15 @@ layout: null
 
 
 
-        <!-- =====================
-             FILM
-        ====================== -->
+        <!-- FILM -->
 
         {% assign film_articles = persian_articles
             | where: "category", "Film"
         %}
 
+
         {% if film_articles.size > 0 %}
+
 
         <section class="section gray-section">
 
@@ -411,189 +450,4 @@ layout: null
                 </div>
 
 
-                <div class="feature-grid">
-
-                    {% for article in film_articles limit:2 %}
-
-                    <a
-                        href="{{ article.url | relative_url }}"
-                        class="feature-card"
-                    >
-
-                        {% if article.image %}
-
-                        <div
-                            class="large-image"
-                            style="
-                                background-image:
-                                url('{{ article.image | relative_url }}');
-
-                                background-size: cover;
-                                background-position: center;
-                            "
-                        ></div>
-
-                        {% else %}
-
-                        <div class="large-image"></div>
-
-                        {% endif %}
-
-                        <span class="category">
-                            {{ article.category }}
-                        </span>
-
-                        <h2>
-                            {{ article.title }}
-                        </h2>
-
-                    </a>
-
-                    {% endfor %}
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-        {% endif %}
-
-
-
-        <!-- =====================
-             TV
-        ====================== -->
-
-        {% assign tv_articles = persian_articles
-            | where: "category", "TV"
-        %}
-
-        {% if tv_articles.size > 0 %}
-
-        <section class="section">
-
-            <div class="container">
-
-
-                <div class="section-header">
-
-                    <h2>
-                        تلویزیون
-                    </h2>
-
-                </div>
-
-
-                <div class="tv-grid">
-
-                    {% for article in tv_articles limit:3 %}
-
-                    <a href="{{ article.url | relative_url }}">
-
-                        {% if article.image %}
-
-                        <div
-                            class="small-image"
-                            style="
-                                background-image:
-                                url('{{ article.image | relative_url }}');
-
-                                background-size: cover;
-                                background-position: center;
-                            "
-                        ></div>
-
-                        {% else %}
-
-                        <div class="small-image"></div>
-
-                        {% endif %}
-
-                        <span class="category">
-                            {{ article.category }}
-                        </span>
-
-                        <h3>
-                            {{ article.title }}
-                        </h3>
-
-                    </a>
-
-                    {% endfor %}
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-        {% endif %}
-
-
-    </main>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="container footer-inner">
-
-            <div class="footer-logo">
-                CINEMA<span>DAILY</span>
-            </div>
-
-            <p>
-                اخبار سینما، تلویزیون و سرگرمی
-            </p>
-
-            <div class="footer-links">
-
-                <a
-                    href="https://www.instagram.com/cinemadaily"
-                    target="_blank"
-                >
-                    Instagram
-                </a>
-
-                <a
-                    href="https://t.me/cinemadaily"
-                    target="_blank"
-                >
-                    Telegram
-                </a>
-
-                <a
-                    href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
-                    target="_blank"
-                >
-                    WhatsApp
-                </a>
-
-                <a
-                    href="https://m.youtube.com/cinemadailytv?ra=m"
-                    target="_blank"
-                >
-                    YouTube
-                </a>
-
-            </div>
-
-            <div class="copyright">
-                © 2026 CinemaDaily
-            </div>
-
-        </div>
-
-    </footer>
-
-
-</body>
-
-</html>
+                <div class="feature
