@@ -17,10 +17,7 @@
 
     <!-- BASIC SEO -->
 
-    <title>
-        {{ page.title }} | CinemaDaily
-    </title>
-
+    <title>{{ page.title }} | CinemaDaily</title>
 
     <meta
         name="description"
@@ -31,7 +28,6 @@
         name="robots"
         content="index, follow, max-image-preview:large"
     >
-
 
     <link
         rel="canonical"
@@ -55,10 +51,7 @@
 
     <!-- OPEN GRAPH -->
 
-    <meta
-        property="og:type"
-        content="article"
-    >
+    <meta property="og:type" content="article">
 
     <meta
         property="og:site_name"
@@ -96,8 +89,6 @@
     {% endif %}
 
 
-    <!-- ARTICLE METADATA -->
-
     {% if page.date %}
 
     <meta
@@ -118,7 +109,7 @@
     {% endif %}
 
 
-    <!-- X / TWITTER -->
+    <!-- TWITTER / X -->
 
     <meta
         name="twitter:card"
@@ -152,33 +143,22 @@
     {
         "@context": "https://schema.org",
         "@type": "NewsArticle",
-
         "headline": {{ page.title | jsonify }},
-
         "description": {{ page.summary | default: page.title | strip_html | jsonify }},
-
         "url": {{ page.url | absolute_url | jsonify }},
-
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": {{ page.url | absolute_url | jsonify }}
         },
-
         {% if page.image %}
-
         "image": [
             {{ page.image | absolute_url | jsonify }}
         ],
-
         {% endif %}
-
         {% if page.date %}
-
         "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
         "dateModified": {{ page.date | date_to_xmlschema | jsonify }},
-
         {% endif %}
-
         "publisher": {
             "@type": "Organization",
             "name": "CinemaDaily",
@@ -197,15 +177,7 @@
     >
 
 
-    <!-- ARTICLE IMAGE FIX -->
-
     <style>
-
-        /*
-        Prevent desktop article images from being cropped.
-        The original stylesheet applies max-height + object-fit: cover.
-        This override keeps the complete source image visible.
-        */
 
         .article-main-image {
             display: block;
@@ -213,42 +185,463 @@
             height: auto;
             max-height: none;
             object-fit: contain;
-            object-position: center center;
+            object-position: center;
             margin-bottom: 45px;
         }
 
-
-        @media (max-width: 768px) {
-
-            .article-main-image {
-                width: 100%;
-                height: auto;
-                max-height: none;
-                object-fit: contain;
-            }
-
-        }
-
     </style>
+
 
 </head>
 
 
 <body
     {% if page.language == "fa" %}
-        class="rtl-page"
+    class="rtl-page"
     {% endif %}
 >
 
 
+<!-- HEADER -->
+
 <header class="site-header">
+
 
     <div class="header-main">
 
 
         <div class="header-logo">
 
+            <a href="{{ '/index.html' | relative_url }}">
+
+                <img
+                    src="{{ '/images/logo2.jpeg' | relative_url }}"
+                    alt="CinemaDaily"
+                >
+
+            </a>
+
+        </div>
+
+
+
+        <div class="container header-bottom">
+
+
+            <div class="language">
+
+
+                <a
+                    href="{{ '/index.html' | relative_url }}"
+                    {% if page.language != "fa" %}
+                    class="active"
+                    {% endif %}
+                >
+                    EN
+                </a>
+
+
+                <span>|</span>
+
+
+                <a
+                    href="{{ '/fa.html' | relative_url }}"
+                    {% if page.language == "fa" %}
+                    class="active"
+                    {% endif %}
+                >
+                    فارسی
+                </a>
+
+
+            </div>
+
+
+
+            <div class="social-links">
+
+
+                <a
+                    href="https://www.instagram.com/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Instagram
+                </a>
+
+
+                <a
+                    href="https://t.me/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Telegram
+                </a>
+
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WhatsApp
+                </a>
+
+
+                <a
+                    href="https://m.youtube.com/cinemadailytv?ra=m"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    YouTube
+                </a>
+
+
+                <a href="{{ '/search.html' | relative_url }}">
+                    Search
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="main-nav">
+
+        <div class="container nav-inner">
+
+
+            <a href="{{ '/news.html' | relative_url }}">
+                NEWS
+            </a>
+
+
+            <a href="{{ '/film.html' | relative_url }}">
+                FILM
+            </a>
+
+
+            <a href="{{ '/tv.html' | relative_url }}">
+                TV
+            </a>
+
+
+            <a href="{{ '/reviews.html' | relative_url }}">
+                REVIEWS
+            </a>
+
+
+            <a href="{{ '/box-office.html' | relative_url }}">
+                BOX OFFICE
+            </a>
+
+
+            <a href="{{ '/awards.html' | relative_url }}">
+                AWARDS
+            </a>
+
+
+            <a href="{{ '/trailers.html' | relative_url }}">
+                TRAILERS
+            </a>
+
+
+            <a href="{{ '/features.html' | relative_url }}">
+                FEATURES
+            </a>
+
+
+        </div>
+
+    </nav>
+
+
+</header>
+
+
+
+<!-- ARTICLE -->
+
+<main class="article-page">
+
+
+    <div class="container">
+
+
+        {% if page.category %}
+
+        <div class="article-category">
+            {{ page.category }}
+        </div>
+
+        {% endif %}
+
+
+
+        <h1 class="article-title">
+            {{ page.title }}
+        </h1>
+
+
+
+        {% if page.summary %}
+
+        <div class="article-excerpt">
+            {{ page.summary }}
+        </div>
+
+        {% endif %}
+
+
+
+        {% if page.date %}
+
+        <div class="article-meta">
+
+            <span>
+
+                {% if page.language == "fa" %}
+                    منتشر شده در
+                {% else %}
+                    Published
+                {% endif %}
+
+                {{ page.date | date: "%B %d, %Y" }}
+
+            </span>
+
+        </div>
+
+        {% endif %}
+
+
+
+        {% if page.image %}
+
+        <img
+            src="{{ page.image | relative_url }}"
+            alt="{{ page.title | escape }}"
+            class="article-main-image"
+        >
+
+        {% else %}
+
+        <div class="article-hero"></div>
+
+        {% endif %}
+
+
+
+        <div class="article-layout">
+
+
+            <article class="article-content">
+
+                {{ content }}
+
+            </article>
+
+
+
+            <aside class="article-sidebar">
+
+
+                <div class="sidebar-title">
+
+                    {% if page.language == "fa" %}
+                        مطالب مرتبط
+                    {% else %}
+                        Related Stories
+                    {% endif %}
+
+                </div>
+
+
+                {% assign related_articles = site.articles
+                    | where: "category", page.category
+                    | where: "language", page.language
+                    | sort: "date"
+                    | reverse
+                %}
+
+
+                {% assign related_count = 0 %}
+
+
+                {% for article in related_articles %}
+
+
+                    {% if article.url != page.url and related_count < 4 %}
+
+
+                    <a
+                        href="{{ article.url | relative_url }}"
+                        class="sidebar-story"
+                    >
+
+                        <span class="category">
+                            {{ article.category }}
+                        </span>
+
+                        <strong>
+                            {{ article.title }}
+                        </strong>
+
+                    </a>
+
+
+                    {% assign related_count = related_count | plus: 1 %}
+
+
+                    {% endif %}
+
+
+                {% endfor %}
+
+
+
+                {% if related_count == 0 %}
+
+                <div class="sidebar-story">
+
+                    {% if page.language == "fa" %}
+                        هنوز مطلب مرتبطی منتشر نشده است.
+                    {% else %}
+                        No related stories yet.
+                    {% endif %}
+
+                </div>
+
+                {% endif %}
+
+
+            </aside>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+
+    <div class="container footer-inner">
+
+
+        <div class="footer-logo">
+            CINEMA<span>DAILY</span>
+        </div>
+
+
+        <p>
+
+            {% if page.language == "fa" %}
+                اخبار سینما، تلویزیون و سرگرمی
+            {% else %}
+                Film, television and entertainment news from around the world.
+            {% endif %}
+
+        </p>
+
+
+
+        <div class="footer-links">
+
+
+            <a href="{{ '/about.html' | relative_url }}">
+                About
+            </a>
+
+
+            <a href="{{ '/contact.html' | relative_url }}">
+                Contact
+            </a>
+
+
+            <a href="{{ '/privacy.html' | relative_url }}">
+                Privacy
+            </a>
+
+
+            <a href="{{ '/search.html' | relative_url }}">
+                Search
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-links">
+
+
             <a
-                href="
-                {% if page.language == 'fa' %}
-                    {{ '/fa.html' |
+                href="https://www.instagram.com/cinemadaily"
+                target="_blank"
+                rel="noopener"
+            >
+                Instagram
+            </a>
+
+
+            <a
+                href="https://t.me/cinemadaily"
+                target="_blank"
+                rel="noopener"
+            >
+                Telegram
+            </a>
+
+
+            <a
+                href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
+                target="_blank"
+                rel="noopener"
+            >
+                WhatsApp
+            </a>
+
+
+            <a
+                href="https://m.youtube.com/cinemadailytv?ra=m"
+                target="_blank"
+                rel="noopener"
+            >
+                YouTube
+            </a>
+
+
+        </div>
+
+
+
+        <div class="copyright">
+            © 2026 CinemaDaily. All rights reserved.
+        </div>
+
+
+    </div>
+
+
+</footer>
+
+
+</body>
+
+</html>
