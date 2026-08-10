@@ -38,6 +38,9 @@ content:
       - name: date
         label: Publish Date
         type: date
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm"
 
       - name: summary
         label: Summary
