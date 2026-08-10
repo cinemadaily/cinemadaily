@@ -475,13 +475,19 @@ img {
         );
 }
 
+
+/* ARTICLE IMAGE — SHOW COMPLETE IMAGE */
+
 .article-main-image {
     display: block;
     width: 100%;
-    max-height: 650px;
-    object-fit: cover;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center center;
     margin-bottom: 45px;
 }
+
 
 .article-layout {
     display: grid;
@@ -776,6 +782,13 @@ footer {
 
     .article-hero {
         height: 330px;
+    }
+
+    .article-main-image {
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
     }
 
     .article-layout {
