@@ -11,10 +11,6 @@ layout: null
     </url>
 
     <url>
-        <loc>{{ '/fa.html' | absolute_url }}</loc>
-    </url>
-
-    <url>
         <loc>{{ '/news.html' | absolute_url }}</loc>
     </url>
 
@@ -47,10 +43,6 @@ layout: null
     </url>
 
     <url>
-        <loc>{{ '/search.html' | absolute_url }}</loc>
-    </url>
-
-    <url>
         <loc>{{ '/about.html' | absolute_url }}</loc>
     </url>
 
@@ -63,7 +55,12 @@ layout: null
     </url>
 
 
-    {% assign sitemap_articles = site.articles | sort: "date" | reverse %}
+    {% assign sitemap_articles = site.articles
+        | where: "language", "en"
+        | sort: "date"
+        | reverse
+    %}
+
 
     {% for article in sitemap_articles %}
 
