@@ -51,7 +51,10 @@
 
     <!-- OPEN GRAPH -->
 
-    <meta property="og:type" content="article">
+    <meta
+        property="og:type"
+        content="article"
+    >
 
     <meta
         property="og:site_name"
@@ -143,28 +146,44 @@
     {
         "@context": "https://schema.org",
         "@type": "NewsArticle",
+
         "headline": {{ page.title | jsonify }},
+
         "description": {{ page.summary | default: page.title | strip_html | jsonify }},
+
         "url": {{ page.url | absolute_url | jsonify }},
+
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": {{ page.url | absolute_url | jsonify }}
         },
+
         {% if page.image %}
         "image": [
             {{ page.image | absolute_url | jsonify }}
         ],
         {% endif %}
+
         {% if page.date %}
         "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
         "dateModified": {{ page.date | date_to_xmlschema | jsonify }},
         {% endif %}
-        "publisher": {
+
+        "author": {
             "@type": "Organization",
             "name": "CinemaDaily",
+            "url": "https://cinemadaily.ca/"
+        },
+
+        "publisher": {
+            "@type": "Organization",
+            "@id": "https://cinemadaily.ca/#organization",
+            "name": "CinemaDaily",
+            "legalName": "CINEMADAILY MEDIA INC.",
+            "url": "https://cinemadaily.ca/",
             "logo": {
                 "@type": "ImageObject",
-                "url": {{ '/images/logo2.jpeg' | absolute_url | jsonify }}
+                "url": "https://cinemadaily.ca/images/logo2.jpeg"
             }
         }
     }
@@ -177,6 +196,8 @@
     >
 
 
+    <!-- ARTICLE IMAGE FIX -->
+
     <style>
 
         .article-main-image {
@@ -185,8 +206,19 @@
             height: auto;
             max-height: none;
             object-fit: contain;
-            object-position: center;
+            object-position: center center;
             margin-bottom: 45px;
+        }
+
+        @media (max-width: 768px) {
+
+            .article-main-image {
+                width: 100%;
+                height: auto;
+                max-height: none;
+                object-fit: contain;
+            }
+
         }
 
     </style>
@@ -554,7 +586,7 @@
             {% if page.language == "fa" %}
                 اخبار سینما، تلویزیون و سرگرمی
             {% else %}
-                Film, television and entertainment news from around the world.
+                English-language coverage of Iranian cinema, film, television and entertainment.
             {% endif %}
 
         </p>
@@ -630,9 +662,18 @@
         </div>
 
 
+        <div class="footer-links">
+
+            <a href="mailto:info@cinemadaily.ca">
+                info@cinemadaily.ca
+            </a>
+
+        </div>
+
+
 
         <div class="copyright">
-            © 2026 CinemaDaily. All rights reserved.
+            © 2026 CINEMADAILY MEDIA INC. All rights reserved.
         </div>
 
 
