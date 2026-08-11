@@ -3,26 +3,28 @@ media:
   output: /images
 
 content:
-
   - name: posts
     label: Articles
     path: _articles
     type: collection
 
     fields:
-
       - name: title
         label: Title
         type: string
+        required: true
 
       - name: slug
         label: Slug
         type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
         description: Clean English URL slug, e.g. asghar-farhadi-new-film
 
       - name: category
         label: Category
         type: select
+        required: true
         options:
           values:
             - News
@@ -37,6 +39,7 @@ content:
       - name: language
         label: Language
         type: select
+        required: true
         options:
           values:
             - en
@@ -45,6 +48,7 @@ content:
       - name: date
         label: Publish Date
         type: date
+        required: true
         options:
           format: yyyy-MM-dd
 
@@ -52,12 +56,14 @@ content:
         label: Updated Date
         type: date
         required: false
+        default: ""
         options:
           format: yyyy-MM-dd
 
       - name: summary
         label: Summary
         type: text
+        required: true
 
       - name: people
         label: People
@@ -86,7 +92,9 @@ content:
       - name: image
         label: Featured Image
         type: image
+        required: false
 
       - name: body
         label: Article
         type: rich-text
+        required: true
