@@ -9,6 +9,16 @@ content:
     path: _articles
     type: collection
 
+    filename: "{year}-{month}-{day}-{slug}.md"
+
+    view:
+      primary: title
+      sort:
+        - date
+      default:
+        sort: date
+        order: desc
+
     fields:
 
       - name: title
@@ -51,7 +61,6 @@ content:
         label: Updated Date
         type: date
         required: false
-        default: ""
         options:
           format: yyyy-MM-dd
 
@@ -64,30 +73,26 @@ content:
         label: People
         type: string
         required: false
-        description: Main people mentioned in the article, e.g. Asghar Farhadi, Taraneh Alidoosti
+        description: Main people mentioned in the article
 
       - name: film
         label: Film
         type: string
         required: false
-        description: Main film title in English
 
       - name: festival
         label: Festival
         type: string
         required: false
-        description: Festival name, e.g. Cannes Film Festival
 
       - name: author
         label: Author
         type: string
         required: false
-        default: CinemaDaily
 
       - name: image
         label: Featured Image
         type: image
-        required: false
 
       - name: body
         label: Article
