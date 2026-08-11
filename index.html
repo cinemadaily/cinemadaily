@@ -16,15 +16,126 @@ layout: null
 
     <title>CinemaDaily | Iranian Cinema, Film & Entertainment News</title>
 
-<meta
-    name="description"
-    content="CinemaDaily is an English-language source for Iranian cinema news, films, filmmakers, actors, festivals, box office and entertainment."
->
+    <meta
+        name="description"
+        content="CinemaDaily is an English-language source for Iranian cinema news, films, filmmakers, actors, festivals, box office and entertainment."
+    >
 
-<link
-    rel="canonical"
-    href="https://cinemadaily.ca/"
->
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <link
+        rel="canonical"
+        href="https://cinemadaily.ca/"
+    >
+
+    <!-- OPEN GRAPH -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:site_name"
+        content="CinemaDaily"
+    >
+
+    <meta
+        property="og:title"
+        content="CinemaDaily | Iranian Cinema, Film & Entertainment News"
+    >
+
+    <meta
+        property="og:description"
+        content="CinemaDaily is an English-language source for Iranian cinema news, films, filmmakers, actors, festivals, box office and entertainment."
+    >
+
+    <meta
+        property="og:url"
+        content="https://cinemadaily.ca/"
+    >
+
+    <meta
+        property="og:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+    <!-- TWITTER / X -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="CinemaDaily | Iranian Cinema, Film & Entertainment News"
+    >
+
+    <meta
+        name="twitter:description"
+        content="English-language coverage of Iranian cinema, filmmakers, actors, films, festivals and entertainment."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+    <!-- FAVICON -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="{{ '/images/favicon.png' | relative_url }}"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        href="{{ '/images/favicon.png' | relative_url }}"
+    >
+
+    <!-- STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://cinemadaily.ca/#organization",
+                "name": "CinemaDaily",
+                "legalName": "CINEMADAILY MEDIA INC.",
+                "url": "https://cinemadaily.ca/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://cinemadaily.ca/images/logo2.jpeg"
+                },
+                "email": "info@cinemadaily.ca",
+                "sameAs": [
+                    "https://www.instagram.com/cinemadaily",
+                    "https://t.me/cinemadaily",
+                    "https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F",
+                    "https://m.youtube.com/cinemadailytv?ra=m"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://cinemadaily.ca/#website",
+                "url": "https://cinemadaily.ca/",
+                "name": "CinemaDaily",
+                "description": "English-language news and coverage of Iranian cinema, films, filmmakers, actors, festivals and entertainment.",
+                "publisher": {
+                    "@id": "https://cinemadaily.ca/#organization"
+                },
+                "inLanguage": "en"
+            }
+        ]
+    }
+    </script>
 
     <link
         rel="stylesheet"
@@ -367,7 +478,7 @@ layout: null
 
                         <img
                             src="{{ article.image | relative_url }}"
-                            alt="{{ article.title }}"
+                            alt="{{ article.title | escape }}"
                             class="article-card-image"
                         >
 
@@ -614,7 +725,7 @@ layout: null
 
 
             <p>
-                Film, television and entertainment news from around the world.
+                English-language coverage of Iranian cinema, film, television and entertainment.
             </p>
 
 
@@ -677,14 +788,18 @@ layout: null
 
 
             <div class="footer-links">
-    <a href="mailto:info@cinemadaily.ca">
-        info@cinemadaily.ca
-    </a>
-</div>
 
-<div class="copyright">
-    © 2026 CINEMADAILY MEDIA INC. All rights reserved.
-</div>
+                <a href="mailto:info@cinemadaily.ca">
+                    info@cinemadaily.ca
+                </a>
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 CINEMADAILY MEDIA INC. All rights reserved.
+            </div>
+
 
         </div>
 
