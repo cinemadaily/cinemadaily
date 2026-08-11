@@ -14,12 +14,81 @@ layout: null
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>TV | CinemaDaily</title>
+    <!-- BASIC SEO -->
+
+    <title>Iranian TV & Series News | CinemaDaily</title>
 
     <meta
         name="description"
-        content="Latest television, streaming and entertainment news from CinemaDaily."
+        content="Latest Iranian television and series news, streaming updates, actors, creators and entertainment coverage from CinemaDaily."
     >
+
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <link
+        rel="canonical"
+        href="https://cinemadaily.ca/tv.html"
+    >
+
+
+    <!-- OPEN GRAPH -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:site_name"
+        content="CinemaDaily"
+    >
+
+    <meta
+        property="og:title"
+        content="Iranian TV & Series News | CinemaDaily"
+    >
+
+    <meta
+        property="og:description"
+        content="Latest Iranian television and series news, streaming updates, actors, creators and entertainment coverage from CinemaDaily."
+    >
+
+    <meta
+        property="og:url"
+        content="https://cinemadaily.ca/tv.html"
+    >
+
+    <meta
+        property="og:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+
+    <!-- TWITTER / X -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Iranian TV & Series News | CinemaDaily"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Iranian television, series, streaming, actors and creators news from CinemaDaily."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
 
     <!-- FAVICON -->
 
@@ -33,6 +102,32 @@ layout: null
         rel="apple-touch-icon"
         href="{{ '/images/favicon.png' | relative_url }}"
     >
+
+
+    <!-- STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": "https://cinemadaily.ca/tv.html#webpage",
+        "url": "https://cinemadaily.ca/tv.html",
+        "name": "Iranian TV & Series News | CinemaDaily",
+        "description": "Latest Iranian television and series news, streaming updates, actors, creators and entertainment coverage from CinemaDaily.",
+        "isPartOf": {
+            "@id": "https://cinemadaily.ca/#website"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "Iranian television"
+        },
+        "publisher": {
+            "@id": "https://cinemadaily.ca/#organization"
+        },
+        "inLanguage": "en"
+    }
+    </script>
+
 
     <link
         rel="stylesheet"
@@ -244,25 +339,19 @@ layout: null
 
 
                             <span class="category">
-
                                 {{ article.category }}
-
                             </span>
 
 
                             <h3>
-
                                 {{ article.title }}
-
                             </h3>
 
 
                             {% if article.summary %}
 
                             <p>
-
                                 {{ article.summary }}
-
                             </p>
 
                             {% endif %}
@@ -298,16 +387,12 @@ layout: null
 
 
             <div class="footer-logo">
-
                 CINEMA<span>DAILY</span>
-
             </div>
 
 
             <p>
-
-                Film, television and entertainment news from around the world.
-
+                English-language coverage of Iranian cinema, film, television and entertainment.
             </p>
 
 
@@ -379,10 +464,17 @@ layout: null
             </div>
 
 
+            <div class="footer-links">
+
+                <a href="mailto:info@cinemadaily.ca">
+                    info@cinemadaily.ca
+                </a>
+
+            </div>
+
+
             <div class="copyright">
-
-                © 2026 CinemaDaily. All rights reserved.
-
+                © 2026 CINEMADAILY MEDIA INC. All rights reserved.
             </div>
 
 
