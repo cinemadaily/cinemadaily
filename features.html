@@ -14,12 +14,81 @@ layout: null
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Features | CinemaDaily</title>
+    <!-- BASIC SEO -->
+
+    <title>Iranian Cinema Features & Interviews | CinemaDaily</title>
 
     <meta
         name="description"
-        content="Original features, interviews and in-depth entertainment stories from CinemaDaily."
+        content="Original features, interviews, profiles and in-depth stories about Iranian cinema, filmmakers, actors and the film industry from CinemaDaily."
     >
+
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <link
+        rel="canonical"
+        href="https://cinemadaily.ca/features.html"
+    >
+
+
+    <!-- OPEN GRAPH -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:site_name"
+        content="CinemaDaily"
+    >
+
+    <meta
+        property="og:title"
+        content="Iranian Cinema Features & Interviews | CinemaDaily"
+    >
+
+    <meta
+        property="og:description"
+        content="Original features, interviews, profiles and in-depth stories about Iranian cinema, filmmakers, actors and the film industry from CinemaDaily."
+    >
+
+    <meta
+        property="og:url"
+        content="https://cinemadaily.ca/features.html"
+    >
+
+    <meta
+        property="og:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+
+    <!-- TWITTER / X -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Iranian Cinema Features & Interviews | CinemaDaily"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Features, interviews and in-depth stories about Iranian cinema, filmmakers and actors from CinemaDaily."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
 
     <!-- FAVICON -->
 
@@ -33,6 +102,32 @@ layout: null
         rel="apple-touch-icon"
         href="{{ '/images/favicon.png' | relative_url }}"
     >
+
+
+    <!-- STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": "https://cinemadaily.ca/features.html#webpage",
+        "url": "https://cinemadaily.ca/features.html",
+        "name": "Iranian Cinema Features & Interviews | CinemaDaily",
+        "description": "Original features, interviews, profiles and in-depth stories about Iranian cinema, filmmakers, actors and the film industry from CinemaDaily.",
+        "isPartOf": {
+            "@id": "https://cinemadaily.ca/#website"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "Iranian cinema"
+        },
+        "publisher": {
+            "@id": "https://cinemadaily.ca/#organization"
+        },
+        "inLanguage": "en"
+    }
+    </script>
+
 
     <link
         rel="stylesheet"
@@ -159,3 +254,225 @@ layout: null
 
                 <a href="{{ '/box-office.html' | relative_url }}">
                     BOX OFFICE
+                </a>
+
+                <a href="{{ '/awards.html' | relative_url }}">
+                    AWARDS
+                </a>
+
+                <a href="{{ '/trailers.html' | relative_url }}">
+                    TRAILERS
+                </a>
+
+                <a href="{{ '/features.html' | relative_url }}">
+                    FEATURES
+                </a>
+
+            </div>
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- CMS -->
+
+    {% assign feature_articles = site.articles
+        | where: "language", "en"
+        | where: "category", "Features"
+        | sort: "date"
+        | reverse
+    %}
+
+
+
+    <!-- MAIN -->
+
+    <main>
+
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+                    <h1>
+                        Features
+                    </h1>
+
+                </div>
+
+
+                <div class="news-grid">
+
+
+                    {% for article in feature_articles %}
+
+
+                    <a
+                        href="{{ article.url | relative_url }}"
+                        class="news-card"
+                    >
+
+
+                        {% if article.image %}
+
+                        <img
+                            src="{{ article.image | relative_url }}"
+                            alt="{{ article.title | escape }}"
+                            class="article-card-image"
+                            loading="lazy"
+                        >
+
+                        {% else %}
+
+                        <div class="card-image"></div>
+
+                        {% endif %}
+
+
+                        <div class="card-content">
+
+
+                            <span class="category">
+                                {{ article.category }}
+                            </span>
+
+
+                            <h3>
+                                {{ article.title }}
+                            </h3>
+
+
+                            {% if article.summary %}
+
+                            <p>
+                                {{ article.summary }}
+                            </p>
+
+                            {% endif %}
+
+
+                        </div>
+
+
+                    </a>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+
+        <div class="container footer-inner">
+
+
+            <div class="footer-logo">
+                CINEMA<span>DAILY</span>
+            </div>
+
+
+            <p>
+                English-language coverage of Iranian cinema, film, television and entertainment.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a href="{{ '/about.html' | relative_url }}">
+                    About
+                </a>
+
+                <a href="{{ '/contact.html' | relative_url }}">
+                    Contact
+                </a>
+
+                <a href="{{ '/privacy.html' | relative_url }}">
+                    Privacy
+                </a>
+
+                <a href="{{ '/search.html' | relative_url }}">
+                    Search
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a
+                    href="https://www.instagram.com/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="https://t.me/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Telegram
+                </a>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://m.youtube.com/cinemadailytv?ra=m"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    YouTube
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="mailto:info@cinemadaily.ca">
+                    info@cinemadaily.ca
+                </a>
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 CINEMADAILY MEDIA INC. All rights reserved.
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
