@@ -3,15 +3,22 @@ media:
   output: /images
 
 content:
+
   - name: posts
     label: Articles
     path: _articles
     type: collection
 
     fields:
+
       - name: title
         label: Title
         type: string
+
+      - name: slug
+        label: Slug
+        type: string
+        description: Clean English URL slug, e.g. asghar-farhadi-new-film
 
       - name: category
         label: Category
@@ -41,9 +48,40 @@ content:
         options:
           format: yyyy-MM-dd
 
+      - name: updated
+        label: Updated Date
+        type: date
+        required: false
+        options:
+          format: yyyy-MM-dd
+
       - name: summary
         label: Summary
         type: text
+
+      - name: people
+        label: People
+        type: string
+        required: false
+        description: Main people mentioned in the article, e.g. Asghar Farhadi, Taraneh Alidoosti
+
+      - name: film
+        label: Film
+        type: string
+        required: false
+        description: Main film title in English
+
+      - name: festival
+        label: Festival
+        type: string
+        required: false
+        description: Festival name, e.g. Cannes Film Festival
+
+      - name: author
+        label: Author
+        type: string
+        required: false
+        default: CinemaDaily
 
       - name: image
         label: Featured Image
