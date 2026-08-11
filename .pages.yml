@@ -3,23 +3,18 @@ media:
   output: /images
 
 content:
+
   - name: posts
     label: Articles
     path: _articles
     type: collection
 
     fields:
+
       - name: title
         label: Title
         type: string
         required: true
-
-      - name: slug
-        label: Slug
-        type: string
-        required: true
-        pattern: "^[a-z0-9-]+$"
-        description: Clean English URL slug, e.g. asghar-farhadi-new-film
 
       - name: category
         label: Category
