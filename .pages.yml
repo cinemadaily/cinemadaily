@@ -3,24 +3,14 @@ media:
   output: /images
 
 content:
-
   - name: posts
     label: Articles
-    path: _articles
     type: collection
+    path: _articles
 
-    filename: "{year}-{month}-{day}-{slug}.md"
-
-    view:
-      primary: title
-      sort:
-        - date
-      default:
-        sort: date
-        order: desc
+    filename: "{primary}.md"
 
     fields:
-
       - name: title
         label: Title
         type: string
@@ -57,38 +47,10 @@ content:
         options:
           format: yyyy-MM-dd
 
-      - name: updated
-        label: Updated Date
-        type: date
-        required: false
-        options:
-          format: yyyy-MM-dd
-
       - name: summary
         label: Summary
         type: text
         required: true
-
-      - name: people
-        label: People
-        type: string
-        required: false
-        description: Main people mentioned in the article
-
-      - name: film
-        label: Film
-        type: string
-        required: false
-
-      - name: festival
-        label: Festival
-        type: string
-        required: false
-
-      - name: author
-        label: Author
-        type: string
-        required: false
 
       - name: image
         label: Featured Image
