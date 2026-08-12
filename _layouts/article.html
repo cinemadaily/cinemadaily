@@ -76,7 +76,6 @@
         content="{{ page.url | absolute_url }}"
     >
 
-
     {% if page.image %}
 
     <meta
@@ -91,7 +90,6 @@
 
     {% endif %}
 
-
     {% if page.date %}
 
     <meta
@@ -100,7 +98,6 @@
     >
 
     {% endif %}
-
 
     {% if page.category %}
 
@@ -129,7 +126,6 @@
         content="{{ page.summary | default: page.title | strip_html | escape }}"
     >
 
-
     {% if page.image %}
 
     <meta
@@ -146,13 +142,9 @@
     {
         "@context": "https://schema.org",
         "@type": "NewsArticle",
-
         "headline": {{ page.title | jsonify }},
-
         "description": {{ page.summary | default: page.title | strip_html | jsonify }},
-
         "url": {{ page.url | absolute_url | jsonify }},
-
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": {{ page.url | absolute_url | jsonify }}
@@ -168,6 +160,12 @@
         "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
         "dateModified": {{ page.date | date_to_xmlschema | jsonify }},
         {% endif %}
+
+        {% if page.category %}
+        "articleSection": {{ page.category | jsonify }},
+        {% endif %}
+
+        "inLanguage": {{ page.language | default: "en" | jsonify }},
 
         "author": {
             "@type": "Organization",
@@ -262,7 +260,6 @@
 
             <div class="language">
 
-
                 <a
                     href="{{ '/index.html' | relative_url }}"
                     {% if page.language != "fa" %}
@@ -272,9 +269,7 @@
                     EN
                 </a>
 
-
                 <span>|</span>
-
 
                 <a
                     href="{{ '/fa.html' | relative_url }}"
@@ -285,13 +280,11 @@
                     فارسی
                 </a>
 
-
             </div>
 
 
 
             <div class="social-links">
-
 
                 <a
                     href="https://www.instagram.com/cinemadaily"
@@ -301,7 +294,6 @@
                     Instagram
                 </a>
 
-
                 <a
                     href="https://t.me/cinemadaily"
                     target="_blank"
@@ -309,7 +301,6 @@
                 >
                     Telegram
                 </a>
-
 
                 <a
                     href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
@@ -319,7 +310,6 @@
                     WhatsApp
                 </a>
 
-
                 <a
                     href="https://m.youtube.com/cinemadailytv?ra=m"
                     target="_blank"
@@ -328,11 +318,9 @@
                     YouTube
                 </a>
 
-
                 <a href="{{ '/search.html' | relative_url }}">
                     Search
                 </a>
-
 
             </div>
 
@@ -350,46 +338,37 @@
 
         <div class="container nav-inner">
 
-
             <a href="{{ '/news.html' | relative_url }}">
                 NEWS
             </a>
-
 
             <a href="{{ '/film.html' | relative_url }}">
                 FILM
             </a>
 
-
             <a href="{{ '/tv.html' | relative_url }}">
                 TV
             </a>
-
 
             <a href="{{ '/reviews.html' | relative_url }}">
                 REVIEWS
             </a>
 
-
             <a href="{{ '/box-office.html' | relative_url }}">
                 BOX OFFICE
             </a>
-
 
             <a href="{{ '/awards.html' | relative_url }}">
                 AWARDS
             </a>
 
-
             <a href="{{ '/trailers.html' | relative_url }}">
                 TRAILERS
             </a>
 
-
             <a href="{{ '/features.html' | relative_url }}">
                 FEATURES
             </a>
-
 
         </div>
 
@@ -504,15 +483,11 @@
                     | reverse
                 %}
 
-
                 {% assign related_count = 0 %}
-
 
                 {% for article in related_articles %}
 
-
                     {% if article.url != page.url and related_count < 4 %}
-
 
                     <a
                         href="{{ article.url | relative_url }}"
@@ -529,15 +504,11 @@
 
                     </a>
 
-
                     {% assign related_count = related_count | plus: 1 %}
-
 
                     {% endif %}
 
-
                 {% endfor %}
-
 
 
                 {% if related_count == 0 %}
@@ -595,33 +566,27 @@
 
         <div class="footer-links">
 
-
             <a href="{{ '/about.html' | relative_url }}">
                 About
             </a>
-
 
             <a href="{{ '/contact.html' | relative_url }}">
                 Contact
             </a>
 
-
             <a href="{{ '/privacy.html' | relative_url }}">
                 Privacy
             </a>
 
-
             <a href="{{ '/search.html' | relative_url }}">
                 Search
             </a>
-
 
         </div>
 
 
 
         <div class="footer-links">
-
 
             <a
                 href="https://www.instagram.com/cinemadaily"
@@ -631,7 +596,6 @@
                 Instagram
             </a>
 
-
             <a
                 href="https://t.me/cinemadaily"
                 target="_blank"
@@ -639,7 +603,6 @@
             >
                 Telegram
             </a>
-
 
             <a
                 href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
@@ -649,7 +612,6 @@
                 WhatsApp
             </a>
 
-
             <a
                 href="https://m.youtube.com/cinemadailytv?ra=m"
                 target="_blank"
@@ -657,7 +619,6 @@
             >
                 YouTube
             </a>
-
 
         </div>
 
