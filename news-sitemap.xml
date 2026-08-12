@@ -1,0 +1,51 @@
+---
+layout: null
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+>
+
+{% assign now_seconds = site.time | date: "%s" | plus: 0 %}
+{% assign two_days_seconds = 172800 %}
+
+{% assign news_articles = site.articles
+  | where: "language", "en"
+  | sort: "date"
+  | reverse
+%}
+
+{% for article in news_articles %}
+
+  {% assign article_seconds = article.date | date: "%s" | plus: 0 %}
+  {% assign article_age = now_seconds | minus: article_seconds %}
+
+  {% if article_age >= 0 and article_age <= two_days_seconds %}
+
+  <url>
+
+    <loc>{{ article.url | absolute_url }}</loc>
+
+    <news:news>
+
+      <news:publication>
+        <news:name>CinemaDaily</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+
+      <news:publication_date>{{ article.date | date: "%Y-%m-%d" }}</news:publication_date>
+
+      <news:title>{{ article.title | strip_html | escape }}</news:title>
+
+    </news:news>
+
+  </url>
+
+  {% endif %}
+
+{% endfor %}
+
+</urlset>
