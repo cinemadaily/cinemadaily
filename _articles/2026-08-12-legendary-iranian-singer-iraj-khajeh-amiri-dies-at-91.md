@@ -1,12 +1,10 @@
 ---
 title: Legendary Iranian Singer Iraj Khajeh Amiri Dies at 91
-category: TV
+category: Film
 language: en
 date: 2026-08-12
-updated: 2026-08-12
 summary: Iraj Khajeh Amiri, one of the most celebrated voices in Iranian
   traditional and popular music, has died at the age of 91
-people: iraj khajeh amiri
 image: /images/photo_1405-05-21 16.20.40.jpeg
 ---
 Iraj Khajeh Amiri, one of the most celebrated voices in Iranian traditional and popular music, has died at the age of 91. According to Cinemadaily, the veteran singer, widely known simply as “Iraj,” was regarded as one of the most distinctive and influential vocalists of his generation.
