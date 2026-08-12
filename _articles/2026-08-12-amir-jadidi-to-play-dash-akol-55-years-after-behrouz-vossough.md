@@ -3,11 +3,9 @@ title: Amir Jadidi to Play Dash Akol, 55 Years After Behrouz Vossough
 category: TV
 language: en
 date: 2026-08-12
-updated: 2026-08-12
 summary: Fifty-five years after Behrouz Vossoughi’s iconic portrayal of Dash
   Akol, Amir Jadidi is set to take on the legendary character in a new
   adaptation
-people: Amir Jadidi.  Behrouz Vossoughi
 image: /images/photo_1405-05-21 16.20.35.jpeg
 ---
 Fifty-five years after Behrouz Vossoughi’s iconic portrayal of Dash Akol, Amir Jadidi is set to take on the legendary character in a new adaptation. According to Cinemadaily, the project will be directed by acclaimed Iranian filmmaker Hamid Nematollah and produced as a series for Iran’s home entertainment network.
