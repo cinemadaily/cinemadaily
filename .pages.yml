@@ -3,6 +3,7 @@ media:
   output: /images
 
 content:
+
   - name: posts
     label: Articles
     type: collection
@@ -56,7 +57,7 @@ content:
         label: People
         type: string
         required: false
-        description: Main people mentioned in the article
+        description: Separate names with commas
 
       - name: image
         label: Featured Image
@@ -66,3 +67,41 @@ content:
         label: Article
         type: rich-text
         required: true
+
+
+  - name: people
+    label: People
+    type: collection
+    path: _people
+
+    filename: "{primary}.md"
+
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+
+      - name: language
+        label: Language
+        type: select
+        required: true
+        options:
+          values:
+            - en
+            - fa
+
+      - name: title
+        label: SEO Title
+        type: string
+        required: true
+
+      - name: description
+        label: SEO Description
+        type: text
+        required: true
+
+      - name: body
+        label: Biography
+        type: rich-text
+        required: false
