@@ -6,7 +6,7 @@ language: en
 date: 2026-08-12
 summary: Parastoo Ahmadi’s voice has been featured in the Iranian film “Bidad,”
   marking a new step in her professional career in Iranian cinema.
-people: Parastoo Ahmadi, Amir Jadidi, Soheil Beiraghi, Sarvin Zabetian, Leyli Rashidi
+people: Parastoo Ahmadi, Amir Jadidi, Soheil Beiraghi, Leyli Rashidi, Sarvin Zabetian
 image: /images/58a408ce-f3a9-4766-a044-604059930444.png
 ---
 Parastoo Ahmadi’s voice has been featured in the Iranian film “Bidad,” marking a new step in her professional career in Iranian cinema. Following the release of the full film on director Soheil Beiraghi’s YouTube channel, music journalist Bahman Babazadeh revealed that Ahmadi’s vocals are heard in several scenes, accompanying the film’s young female protagonist. “Bidad” tells the story of a young woman fighting for her right to sing in Iran and stars Amir Jadidi alongside Leili Rashidi, Sarvin Zabetian and Ali Mollagholipour.
