@@ -1,13 +1,18 @@
 title: CinemaDaily
-description: Film, television and entertainment news from CinemaDaily.
-
-url: "https://cinemadaily.ca"
+description: English-language coverage of Iranian cinema, film, television and entertainment.
+url: https://cinemadaily.ca
 baseurl: ""
+
+markdown: kramdown
 
 collections:
   articles:
     output: true
     permalink: /articles/:name/
+
+  people:
+    output: true
+    permalink: /people/:name/
 
 defaults:
   - scope:
@@ -15,3 +20,14 @@ defaults:
       type: articles
     values:
       layout: article
+
+  - scope:
+      path: ""
+      type: people
+    values:
+      layout: person
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
