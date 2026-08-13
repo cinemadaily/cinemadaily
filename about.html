@@ -14,12 +14,81 @@ layout: null
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>About CinemaDaily | CinemaDaily</title>
+    <!-- BASIC SEO -->
+
+    <title>About CinemaDaily | Iranian Cinema & Entertainment News</title>
 
     <meta
         name="description"
-        content="Learn more about CinemaDaily, an independent destination for film, television and entertainment news."
+        content="CinemaDaily is an independent English-language publication covering Iranian cinema, filmmakers, actors, television, streaming, festivals, box office and entertainment."
     >
+
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <link
+        rel="canonical"
+        href="https://cinemadaily.ca/about.html"
+    >
+
+
+    <!-- OPEN GRAPH -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:site_name"
+        content="CinemaDaily"
+    >
+
+    <meta
+        property="og:title"
+        content="About CinemaDaily | Iranian Cinema & Entertainment News"
+    >
+
+    <meta
+        property="og:description"
+        content="CinemaDaily is an independent English-language publication covering Iranian cinema, filmmakers, actors, television, streaming, festivals, box office and entertainment."
+    >
+
+    <meta
+        property="og:url"
+        content="https://cinemadaily.ca/about.html"
+    >
+
+    <meta
+        property="og:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+
+    <!-- TWITTER / X -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="About CinemaDaily | Iranian Cinema & Entertainment News"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Independent English-language coverage of Iranian cinema, filmmakers, actors, television, festivals and entertainment."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
 
     <!-- FAVICON -->
 
@@ -34,10 +103,45 @@ layout: null
         href="{{ '/images/favicon.png' | relative_url }}"
     >
 
+
+    <!-- STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": "https://cinemadaily.ca/about.html#webpage",
+        "url": "https://cinemadaily.ca/about.html",
+        "name": "About CinemaDaily",
+        "description": "CinemaDaily is an independent English-language publication covering Iranian cinema, filmmakers, actors, television, streaming, festivals, box office and entertainment.",
+        "inLanguage": "en",
+        "about": {
+            "@type": "Organization",
+            "@id": "https://cinemadaily.ca/#organization",
+            "name": "CinemaDaily",
+            "legalName": "CINEMADAILY MEDIA INC.",
+            "url": "https://cinemadaily.ca/",
+            "email": "info@cinemadaily.ca",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cinemadaily.ca/images/logo2.jpeg"
+            },
+            "sameAs": [
+                "https://www.instagram.com/cinemadaily",
+                "https://t.me/cinemadaily",
+                "https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F",
+                "https://m.youtube.com/cinemadailytv?ra=m"
+            ]
+        }
+    }
+    </script>
+
+
     <link
         rel="stylesheet"
         href="{{ '/style.css' | relative_url }}"
     >
+
 
     <style>
 
@@ -70,6 +174,17 @@ layout: null
         .basic-page a {
             color: #6c2bd9;
             font-weight: 700;
+        }
+
+        .publication-details {
+            border-top: 3px solid #111111;
+            border-bottom: 1px solid #dddddd;
+            padding: 24px 0;
+            margin-top: 35px;
+        }
+
+        .publication-details p {
+            margin-bottom: 8px;
         }
 
         @media (max-width: 768px) {
@@ -192,19 +307,29 @@ layout: null
 
             <div class="container nav-inner">
 
-                <a href="{{ '/news.html' | relative_url }}">NEWS</a>
+                <a href="{{ '/news.html' | relative_url }}">
+                    NEWS
+                </a>
 
-                <a href="{{ '/film.html' | relative_url }}">FILM</a>
+                <a href="{{ '/film.html' | relative_url }}">
+                    FILM
+                </a>
 
-                <a href="{{ '/tv.html' | relative_url }}">TV</a>
+                <a href="{{ '/tv.html' | relative_url }}">
+                    TV
+                </a>
 
-                <a href="{{ '/reviews.html' | relative_url }}">REVIEWS</a>
+                <a href="{{ '/reviews.html' | relative_url }}">
+                    REVIEWS
+                </a>
 
                 <a href="{{ '/box-office.html' | relative_url }}">
                     BOX OFFICE
                 </a>
 
-                <a href="{{ '/awards.html' | relative_url }}">AWARDS</a>
+                <a href="{{ '/awards.html' | relative_url }}">
+                    AWARDS
+                </a>
 
                 <a href="{{ '/trailers.html' | relative_url }}">
                     TRAILERS
@@ -241,12 +366,25 @@ layout: null
 
 
             <p>
-                CinemaDaily is an independent digital publication covering film, television and entertainment.
+                CinemaDaily is an independent digital publication providing
+                English-language coverage of Iranian cinema, film, television,
+                streaming and entertainment.
             </p>
 
 
             <p>
-                We publish breaking news, interviews, industry updates, reviews, box office coverage, trailers and original features for audiences interested in cinema and popular culture.
+                Our coverage focuses on Iranian films, filmmakers, actors,
+                television series, streaming productions, film festivals,
+                awards, box office developments and other major stories
+                shaping Iran's entertainment industry.
+            </p>
+
+
+            <p>
+                CinemaDaily also follows the international presence of Iranian
+                cinema, including festival selections, awards, international
+                releases and the work of Iranian filmmakers and performers
+                around the world.
             </p>
 
 
@@ -256,8 +394,71 @@ layout: null
 
 
             <p>
-                Our goal is to deliver timely, accessible and engaging coverage of the entertainment industry while building a direct connection with audiences across our website and social platforms.
+                Our mission is to make news and information about Iranian
+                cinema more accessible to international audiences through
+                timely, clear and reliable English-language reporting.
             </p>
+
+
+            <p>
+                CinemaDaily publishes breaking news, interviews, industry
+                updates, reviews, box office reports, trailers and original
+                features while maintaining a direct connection with audiences
+                through its website and social media platforms.
+            </p>
+
+
+            <h2>
+                Editorial Coverage
+            </h2>
+
+
+            <p>
+                CinemaDaily covers both established and emerging figures in
+                Iranian cinema and television, as well as major productions,
+                festivals, streaming platforms and industry developments.
+            </p>
+
+
+            <p>
+                Our goal is to build a searchable English-language archive of
+                Iranian cinema news and create a reliable reference point for
+                readers, journalists, researchers and cinema audiences around
+                the world.
+            </p>
+
+
+            <div class="publication-details">
+
+                <h2>
+                    Publication Information
+                </h2>
+
+                <p>
+                    <strong>Publication:</strong>
+                    CinemaDaily
+                </p>
+
+                <p>
+                    <strong>Company:</strong>
+                    CINEMADAILY MEDIA INC.
+                </p>
+
+                <p>
+                    <strong>Website:</strong>
+                    cinemadaily.ca
+                </p>
+
+                <p>
+                    <strong>Editorial and business contact:</strong>
+
+                    <a href="mailto:info@cinemadaily.ca">
+                        info@cinemadaily.ca
+                    </a>
+
+                </p>
+
+            </div>
 
 
             <h2>
@@ -267,7 +468,7 @@ layout: null
 
             <p>
 
-                Follow us on
+                Follow CinemaDaily on
 
                 <a
                     href="https://www.instagram.com/cinemadaily"
@@ -316,6 +517,7 @@ layout: null
 
     <footer>
 
+
         <div class="container footer-inner">
 
 
@@ -325,7 +527,7 @@ layout: null
 
 
             <p>
-                Film, television and entertainment news from around the world.
+                English-language coverage of Iranian cinema, film, television and entertainment.
             </p>
 
 
@@ -387,8 +589,17 @@ layout: null
             </div>
 
 
+            <div class="footer-links">
+
+                <a href="mailto:info@cinemadaily.ca">
+                    info@cinemadaily.ca
+                </a>
+
+            </div>
+
+
             <div class="copyright">
-                © 2026 CinemaDaily. All rights reserved.
+                © 2026 CINEMADAILY MEDIA INC. All rights reserved.
             </div>
 
 
