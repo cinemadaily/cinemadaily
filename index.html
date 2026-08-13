@@ -14,6 +14,8 @@ layout: null
         content="width=device-width, initial-scale=1.0"
     >
 
+    <!-- BASIC SEO -->
+
     <title>CinemaDaily | Iranian Cinema, Film & Entertainment News</title>
 
     <meta
@@ -30,6 +32,7 @@ layout: null
         rel="canonical"
         href="https://cinemadaily.ca/"
     >
+
 
     <!-- OPEN GRAPH -->
 
@@ -63,6 +66,7 @@ layout: null
         content="https://cinemadaily.ca/images/logo2.jpeg"
     >
 
+
     <!-- TWITTER / X -->
 
     <meta
@@ -85,6 +89,7 @@ layout: null
         content="https://cinemadaily.ca/images/logo2.jpeg"
     >
 
+
     <!-- FAVICON -->
 
     <link
@@ -98,6 +103,7 @@ layout: null
         href="{{ '/images/favicon.png' | relative_url }}"
     >
 
+
     <!-- STRUCTURED DATA -->
 
     <script type="application/ld+json">
@@ -110,11 +116,11 @@ layout: null
                 "name": "CinemaDaily",
                 "legalName": "CINEMADAILY MEDIA INC.",
                 "url": "https://cinemadaily.ca/",
+                "email": "info@cinemadaily.ca",
                 "logo": {
                     "@type": "ImageObject",
                     "url": "https://cinemadaily.ca/images/logo2.jpeg"
                 },
-                "email": "info@cinemadaily.ca",
                 "sameAs": [
                     "https://www.instagram.com/cinemadaily",
                     "https://t.me/cinemadaily",
@@ -132,10 +138,25 @@ layout: null
                     "@id": "https://cinemadaily.ca/#organization"
                 },
                 "inLanguage": "en"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://cinemadaily.ca/#webpage",
+                "url": "https://cinemadaily.ca/",
+                "name": "CinemaDaily | Iranian Cinema, Film & Entertainment News",
+                "description": "CinemaDaily is an English-language source for Iranian cinema news, films, filmmakers, actors, festivals, box office and entertainment.",
+                "isPartOf": {
+                    "@id": "https://cinemadaily.ca/#website"
+                },
+                "about": {
+                    "@id": "https://cinemadaily.ca/#organization"
+                },
+                "inLanguage": "en"
             }
         ]
     }
     </script>
+
 
     <link
         rel="stylesheet"
@@ -341,7 +362,6 @@ layout: null
 
                     {% else %}
 
-
                     <div class="hero-image">
 
                         <div class="image-label">
@@ -349,7 +369,6 @@ layout: null
                         </div>
 
                     </div>
-
 
                     {% endif %}
 
@@ -380,7 +399,6 @@ layout: null
 
                     {% for article in english_articles offset:1 limit:2 %}
 
-
                     <a
                         href="{{ article.url | relative_url }}"
                         class="story"
@@ -400,12 +418,9 @@ layout: null
                             "
                         ></div>
 
-
                         {% else %}
 
-
                         <div class="story-image"></div>
-
 
                         {% endif %}
 
@@ -425,7 +440,6 @@ layout: null
 
                     </a>
 
-
                     {% endfor %}
 
 
@@ -435,7 +449,6 @@ layout: null
             </div>
 
         </section>
-
 
         {% endif %}
 
@@ -466,7 +479,6 @@ layout: null
 
                     {% for article in english_articles limit:6 %}
 
-
                     <a
                         href="{{ article.url | relative_url }}"
                         class="news-card"
@@ -475,46 +487,37 @@ layout: null
 
                         {% if article.image %}
 
-
                         <img
                             src="{{ article.image | relative_url }}"
                             alt="{{ article.title | escape }}"
                             class="article-card-image"
                         >
 
-
                         {% else %}
 
-
                         <div class="card-image"></div>
-
 
                         {% endif %}
 
 
                         <div class="card-content">
 
-
                             <span class="category">
                                 {{ article.category }}
                             </span>
-
 
                             <h3>
                                 {{ article.title }}
                             </h3>
 
-
                             <p>
                                 {{ article.summary }}
                             </p>
-
 
                         </div>
 
 
                     </a>
-
 
                     {% endfor %}
 
@@ -534,9 +537,7 @@ layout: null
             | where: "category", "Film"
         %}
 
-
         {% if film_articles.size > 0 %}
-
 
         <section class="section gray-section">
 
@@ -561,7 +562,6 @@ layout: null
 
                     {% for article in film_articles limit:2 %}
 
-
                     <a
                         href="{{ article.url | relative_url }}"
                         class="feature-card"
@@ -569,7 +569,6 @@ layout: null
 
 
                         {% if article.image %}
-
 
                         <div
                             class="large-image"
@@ -582,12 +581,9 @@ layout: null
                             "
                         ></div>
 
-
                         {% else %}
 
-
                         <div class="large-image"></div>
-
 
                         {% endif %}
 
@@ -596,14 +592,12 @@ layout: null
                             {{ article.category }}
                         </span>
 
-
                         <h2>
                             {{ article.title }}
                         </h2>
 
 
                     </a>
-
 
                     {% endfor %}
 
@@ -615,7 +609,6 @@ layout: null
 
         </section>
 
-
         {% endif %}
 
 
@@ -626,9 +619,7 @@ layout: null
             | where: "category", "TV"
         %}
 
-
         {% if tv_articles.size > 0 %}
-
 
         <section class="section">
 
@@ -653,12 +644,10 @@ layout: null
 
                     {% for article in tv_articles limit:3 %}
 
-
                     <a href="{{ article.url | relative_url }}">
 
 
                         {% if article.image %}
-
 
                         <div
                             class="small-image"
@@ -671,12 +660,9 @@ layout: null
                             "
                         ></div>
 
-
                         {% else %}
 
-
                         <div class="small-image"></div>
-
 
                         {% endif %}
 
@@ -685,14 +671,12 @@ layout: null
                             {{ article.category }}
                         </span>
 
-
                         <h3>
                             {{ article.title }}
                         </h3>
 
 
                     </a>
-
 
                     {% endfor %}
 
@@ -703,7 +687,6 @@ layout: null
             </div>
 
         </section>
-
 
         {% endif %}
 
@@ -733,6 +716,14 @@ layout: null
 
                 <a href="{{ '/about.html' | relative_url }}">
                     About
+                </a>
+
+                <a href="{{ '/editorial.html' | relative_url }}">
+                    Editorial Policy
+                </a>
+
+                <a href="{{ '/team.html' | relative_url }}">
+                    Editorial Team
                 </a>
 
                 <a href="{{ '/contact.html' | relative_url }}">
