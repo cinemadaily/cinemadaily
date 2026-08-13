@@ -171,6 +171,40 @@
 
         "inLanguage": {{ page.language | default: "en" | jsonify }},
 
+        {% if page.people %}
+
+        "about": [
+
+            {% assign schema_people = page.people | split: "," %}
+
+            {% for person in schema_people %}
+
+                {% assign clean_person = person | strip %}
+                {% assign person_page = nil %}
+
+                {% for profile in site.people %}
+
+                    {% if profile.name == clean_person %}
+                        {% assign person_page = profile %}
+                    {% endif %}
+
+                {% endfor %}
+
+                {
+                    "@type": "Person",
+                    "name": {{ clean_person | jsonify }}
+                    {% if person_page %},
+                    "@id": {{ person_page.url | absolute_url | append: "#person" | jsonify }},
+                    "url": {{ person_page.url | absolute_url | jsonify }}
+                    {% endif %}
+                }{% unless forloop.last %},{% endunless %}
+
+            {% endfor %}
+
+        ],
+
+        {% endif %}
+
         "author": {
             "@type": "Organization",
             "@id": "https://cinemadaily.ca/#editorial-team",
@@ -485,6 +519,7 @@
             {% if page.language == "fa" %}
 
                 توسط
+
                 <a href="{{ '/team.html' | relative_url }}">
                     تحریریه CinemaDaily
                 </a>
@@ -492,6 +527,7 @@
             {% else %}
 
                 By
+
                 <a href="{{ '/team.html' | relative_url }}">
                     CinemaDaily Editorial Team
                 </a>
@@ -807,6 +843,10 @@
 
             <a href="{{ '/team.html' | relative_url }}">
                 Editorial Team
+            </a>
+
+            <a href="{{ '/people.html' | relative_url }}">
+                People
             </a>
 
             <a href="{{ '/contact.html' | relative_url }}">
