@@ -6,8 +6,14 @@ layout: null
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+    <!-- MAIN PAGES -->
+
     <url>
         <loc>{{ '/' | absolute_url }}</loc>
+    </url>
+
+    <url>
+        <loc>{{ '/fa.html' | absolute_url }}</loc>
     </url>
 
     <url>
@@ -43,7 +49,26 @@ layout: null
     </url>
 
     <url>
+        <loc>{{ '/people.html' | absolute_url }}</loc>
+    </url>
+
+    <url>
+        <loc>{{ '/search.html' | absolute_url }}</loc>
+    </url>
+
+
+    <!-- TRUST / COMPANY PAGES -->
+
+    <url>
         <loc>{{ '/about.html' | absolute_url }}</loc>
+    </url>
+
+    <url>
+        <loc>{{ '/editorial.html' | absolute_url }}</loc>
+    </url>
+
+    <url>
+        <loc>{{ '/team.html' | absolute_url }}</loc>
     </url>
 
     <url>
@@ -55,12 +80,9 @@ layout: null
     </url>
 
 
-    {% assign sitemap_articles = site.articles
-        | where: "language", "en"
-        | sort: "date"
-        | reverse
-    %}
+    <!-- ARTICLES -->
 
+    {% assign sitemap_articles = site.articles | sort: "date" | reverse %}
 
     {% for article in sitemap_articles %}
 
@@ -75,5 +97,19 @@ layout: null
     </url>
 
     {% endfor %}
+
+
+    <!-- PEOPLE -->
+
+    {% assign sitemap_people = site.people | sort: "name" %}
+
+    {% for person in sitemap_people %}
+
+    <url>
+        <loc>{{ person.url | absolute_url }}</loc>
+    </url>
+
+    {% endfor %}
+
 
 </urlset>
