@@ -14,12 +14,81 @@ layout: null
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Contact CinemaDaily | CinemaDaily</title>
+    <!-- BASIC SEO -->
+
+    <title>Contact CinemaDaily | Editorial & Business Inquiries</title>
 
     <meta
         name="description"
-        content="Contact CinemaDaily Media Inc. for editorial inquiries, business opportunities, partnerships and general questions."
+        content="Contact CinemaDaily for editorial inquiries, corrections, news tips, interviews, partnerships, advertising and general business questions."
     >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://cinemadaily.ca/contact.html"
+    >
+
+
+    <!-- OPEN GRAPH -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:site_name"
+        content="CinemaDaily"
+    >
+
+    <meta
+        property="og:title"
+        content="Contact CinemaDaily"
+    >
+
+    <meta
+        property="og:description"
+        content="Contact CinemaDaily for editorial inquiries, corrections, interviews, partnerships, advertising and business questions."
+    >
+
+    <meta
+        property="og:url"
+        content="https://cinemadaily.ca/contact.html"
+    >
+
+    <meta
+        property="og:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+
+    <!-- TWITTER / X -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Contact CinemaDaily"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Editorial, corrections, news tips, interviews, partnerships and business inquiries for CinemaDaily."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
 
     <!-- FAVICON -->
 
@@ -34,10 +103,35 @@ layout: null
         href="{{ '/images/favicon.png' | relative_url }}"
     >
 
+
+    <!-- STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "@id": "https://cinemadaily.ca/contact.html#webpage",
+        "url": "https://cinemadaily.ca/contact.html",
+        "name": "Contact CinemaDaily",
+        "description": "Contact CinemaDaily for editorial and business inquiries.",
+        "inLanguage": "en",
+        "about": {
+            "@type": "Organization",
+            "@id": "https://cinemadaily.ca/#organization",
+            "name": "CinemaDaily",
+            "legalName": "CINEMADAILY MEDIA INC.",
+            "url": "https://cinemadaily.ca/",
+            "email": "info@cinemadaily.ca"
+        }
+    }
+    </script>
+
+
     <link
         rel="stylesheet"
         href="{{ '/style.css' | relative_url }}"
     >
+
 
     <style>
 
@@ -67,16 +161,16 @@ layout: null
             margin-bottom: 20px;
         }
 
+        .basic-page a {
+            color: #6c2bd9;
+            font-weight: 700;
+        }
+
         .contact-card {
             border-top: 3px solid #111111;
             border-bottom: 1px solid #dddddd;
             padding: 25px 0;
             margin-top: 20px;
-        }
-
-        .contact-card a {
-            color: #6c2bd9;
-            font-weight: 700;
         }
 
         .contact-email {
@@ -274,11 +368,10 @@ layout: null
 
             <p>
                 Get in touch with CinemaDaily for editorial inquiries,
-                partnerships, business opportunities and general questions.
+                corrections, news tips, interviews, partnerships,
+                advertising and general business questions.
             </p>
 
-
-            <!-- OFFICIAL EMAIL -->
 
             <div class="contact-card">
 
@@ -287,14 +380,19 @@ layout: null
                 </h2>
 
                 <p>
-                    For editorial, business, partnership and general inquiries,
-                    please contact us at:
+                    CinemaDaily is published by CINEMADAILY MEDIA INC.
+                </p>
+
+                <p>
+                    For editorial, business and general inquiries, contact us at:
                 </p>
 
                 <p class="contact-email">
+
                     <a href="mailto:info@cinemadaily.ca">
                         info@cinemadaily.ca
                     </a>
+
                 </p>
 
             </div>
@@ -306,11 +404,21 @@ layout: null
 
 
             <p>
-                For news tips, corrections, interview requests and other
-                editorial matters, please email
+                For news tips, corrections, interview requests,
+                story information and other editorial matters, email
                 <a href="mailto:info@cinemadaily.ca">
                     info@cinemadaily.ca
                 </a>.
+            </p>
+
+
+            <p>
+                You can also review our
+                <a href="{{ '/editorial.html' | relative_url }}">
+                    Editorial Policy
+                </a>
+                for information about our editorial standards,
+                sourcing and corrections process.
             </p>
 
 
@@ -320,10 +428,24 @@ layout: null
 
 
             <p>
-                For advertising, partnerships, collaborations and other
-                business inquiries, please email
+                For advertising, partnerships, collaborations,
+                commercial opportunities and other business inquiries,
+                email
                 <a href="mailto:info@cinemadaily.ca">
                     info@cinemadaily.ca
+                </a>.
+            </p>
+
+
+            <h2>
+                Editorial Team
+            </h2>
+
+
+            <p>
+                Learn more about the
+                <a href="{{ '/team.html' | relative_url }}">
+                    CinemaDaily Editorial Team
                 </a>.
             </p>
 
@@ -334,8 +456,7 @@ layout: null
 
 
             <p>
-                You can also connect with CinemaDaily through our official
-                social media channels.
+                Connect with CinemaDaily through our official channels.
             </p>
 
 
@@ -402,7 +523,7 @@ layout: null
 
 
             <p>
-                Film, television and entertainment news from around the world.
+                English-language coverage of Iranian cinema, film, television and entertainment.
             </p>
 
 
@@ -410,6 +531,14 @@ layout: null
 
                 <a href="{{ '/about.html' | relative_url }}">
                     About
+                </a>
+
+                <a href="{{ '/editorial.html' | relative_url }}">
+                    Editorial Policy
+                </a>
+
+                <a href="{{ '/team.html' | relative_url }}">
+                    Editorial Team
                 </a>
 
                 <a href="{{ '/contact.html' | relative_url }}">
