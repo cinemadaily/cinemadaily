@@ -142,9 +142,13 @@
     {
         "@context": "https://schema.org",
         "@type": "NewsArticle",
+
         "headline": {{ page.title | jsonify }},
+
         "description": {{ page.summary | default: page.title | strip_html | jsonify }},
+
         "url": {{ page.url | absolute_url | jsonify }},
+
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": {{ page.url | absolute_url | jsonify }}
@@ -169,8 +173,9 @@
 
         "author": {
             "@type": "Organization",
-            "name": "CinemaDaily",
-            "url": "https://cinemadaily.ca/"
+            "@id": "https://cinemadaily.ca/#editorial-team",
+            "name": "CinemaDaily Editorial Team",
+            "url": "https://cinemadaily.ca/team.html"
         },
 
         "publisher": {
@@ -194,7 +199,7 @@
     >
 
 
-    <!-- ARTICLE IMAGE FIX -->
+    <!-- ARTICLE IMAGE + BYLINE -->
 
     <style>
 
@@ -206,6 +211,24 @@
             object-fit: contain;
             object-position: center center;
             margin-bottom: 45px;
+        }
+
+        .article-byline {
+            margin-top: 8px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666666;
+        }
+
+        .article-byline a {
+            color: #111111;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .article-byline a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -434,6 +457,27 @@
         {% endif %}
 
 
+        <div class="article-byline">
+
+            {% if page.language == "fa" %}
+
+                توسط
+                <a href="{{ '/team.html' | relative_url }}">
+                    تحریریه CinemaDaily
+                </a>
+
+            {% else %}
+
+                By
+                <a href="{{ '/team.html' | relative_url }}">
+                    CinemaDaily Editorial Team
+                </a>
+
+            {% endif %}
+
+        </div>
+
+
 
         {% if page.image %}
 
@@ -568,6 +612,14 @@
 
             <a href="{{ '/about.html' | relative_url }}">
                 About
+            </a>
+
+            <a href="{{ '/editorial.html' | relative_url }}">
+                Editorial Policy
+            </a>
+
+            <a href="{{ '/team.html' | relative_url }}">
+                Editorial Team
             </a>
 
             <a href="{{ '/contact.html' | relative_url }}">
