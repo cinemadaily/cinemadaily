@@ -1,0 +1,40 @@
+name: Create People Profiles
+
+on:
+  push:
+    paths:
+      - "_articles/**.md"
+
+permissions:
+  contents: write
+
+jobs:
+  create-people:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Create missing people profiles
+        run: python scripts/create_people.py
+
+      - name: Commit new people profiles
+        run: |
+          if [[ -n "$(git status --porcelain _people)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+            git add _people
+
+            git commit -m "Automatically create people profiles"
+
+            git push
+          else
+            echo "No new people profiles to create."
+          fi
