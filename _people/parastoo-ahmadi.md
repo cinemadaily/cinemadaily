@@ -1,11 +1,10 @@
 ---
-layout: person
 name: Parastoo Ahmadi
 language: en
 title: Parastoo Ahmadi | News, Films & Updates | CinemaDaily
-description: Latest news, projects, career updates and coverage of Parastoo Ahmadi on CinemaDaily.
+description: Latest news, projects, career updates and coverage of Parastoo
+  Ahmadi on CinemaDaily.
 ---
-
 Parastoo Ahmadi is covered by CinemaDaily across Iranian cinema, film, television and entertainment news.
 
 This page collects CinemaDaily's latest English-language news, reports and updates about Parastoo Ahmadi.
