@@ -14,12 +14,81 @@ layout: null
         content="width=device-width, initial-scale=1.0"
     >
 
+    <!-- BASIC SEO -->
+
     <title>Privacy Policy | CinemaDaily</title>
 
     <meta
         name="description"
-        content="CinemaDaily Privacy Policy. Learn how information may be collected and used when you visit CinemaDaily."
+        content="Read the CinemaDaily Privacy Policy and learn how information may be collected, used and handled when you visit cinemadaily.ca."
     >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://cinemadaily.ca/privacy.html"
+    >
+
+
+    <!-- OPEN GRAPH -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:site_name"
+        content="CinemaDaily"
+    >
+
+    <meta
+        property="og:title"
+        content="Privacy Policy | CinemaDaily"
+    >
+
+    <meta
+        property="og:description"
+        content="Learn how information may be collected, used and handled when you visit CinemaDaily."
+    >
+
+    <meta
+        property="og:url"
+        content="https://cinemadaily.ca/privacy.html"
+    >
+
+    <meta
+        property="og:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+
+    <!-- TWITTER / X -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Privacy Policy | CinemaDaily"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Learn how information may be collected and used when you visit CinemaDaily."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
 
     <!-- FAVICON -->
 
@@ -34,10 +103,33 @@ layout: null
         href="{{ '/images/favicon.png' | relative_url }}"
     >
 
+
+    <!-- STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://cinemadaily.ca/privacy.html#webpage",
+        "url": "https://cinemadaily.ca/privacy.html",
+        "name": "Privacy Policy | CinemaDaily",
+        "description": "CinemaDaily Privacy Policy.",
+        "inLanguage": "en",
+        "isPartOf": {
+            "@id": "https://cinemadaily.ca/#website"
+        },
+        "publisher": {
+            "@id": "https://cinemadaily.ca/#organization"
+        }
+    }
+    </script>
+
+
     <link
         rel="stylesheet"
         href="{{ '/style.css' | relative_url }}"
     >
+
 
     <style>
 
@@ -67,11 +159,19 @@ layout: null
             margin: 42px 0 12px;
         }
 
-        .basic-page p {
+        .basic-page p,
+        .basic-page li {
             font-size: 18px;
             line-height: 1.9;
             color: #333333;
+        }
+
+        .basic-page p {
             margin-bottom: 20px;
+        }
+
+        .basic-page ul {
+            margin: 0 0 25px 25px;
         }
 
         .basic-page a {
@@ -93,7 +193,8 @@ layout: null
                 font-size: 24px;
             }
 
-            .basic-page p {
+            .basic-page p,
+            .basic-page li {
                 font-size: 17px;
             }
 
@@ -269,25 +370,59 @@ layout: null
             <p>
                 CinemaDaily respects the privacy of its visitors. This Privacy
                 Policy explains the types of information that may be collected
-                when you use our website and how that information may be used.
+                when you visit cinemadaily.ca, how that information may be used
+                and the role of third-party services.
             </p>
 
 
             <h2>
-                Information We Collect
+                Information We May Collect
             </h2>
 
 
             <p>
-                CinemaDaily may collect limited technical information when you
-                visit the website, such as browser type, device type, referring
-                pages and general usage information.
+                When you visit CinemaDaily, limited technical and usage
+                information may be collected automatically. This may include:
             </p>
 
 
+            <ul>
+                <li>
+                    Browser and device information
+                </li>
+
+                <li>
+                    General usage and page-view information
+                </li>
+
+                <li>
+                    Referring pages or websites
+                </li>
+
+                <li>
+                    Approximate technical information associated with
+                    accessing the website
+                </li>
+            </ul>
+
+
             <p>
-                If you contact CinemaDaily directly, we may receive the
-                information you choose to provide as part of that communication.
+                If you contact CinemaDaily directly, we may also receive the
+                information you voluntarily provide in your message, such as
+                your name, email address and the content of your communication.
+            </p>
+
+
+            <h2>
+                How Information May Be Used
+            </h2>
+
+
+            <p>
+                Information may be used to operate, maintain and improve the
+                website, understand how visitors interact with CinemaDaily,
+                respond to communications and support website security and
+                performance.
             </p>
 
 
@@ -297,9 +432,16 @@ layout: null
 
 
             <p>
-                CinemaDaily may use analytics services to understand how visitors
-                use the website, which pages are viewed and how the website can be
-                improved.
+                CinemaDaily may use website analytics services to understand
+                visitor activity, page performance, traffic sources and general
+                usage patterns.
+            </p>
+
+
+            <p>
+                These services may collect information through cookies or
+                similar technologies in accordance with their own terms and
+                privacy policies.
             </p>
 
 
@@ -310,7 +452,8 @@ layout: null
 
             <p>
                 CinemaDaily may use cookies or similar technologies for website
-                functionality, analytics and to improve the visitor experience.
+                functionality, analytics, performance measurement and improving
+                the visitor experience.
             </p>
 
 
@@ -320,10 +463,15 @@ layout: null
 
 
             <p>
-                Our website may contain links to third-party websites and
-                platforms, including Instagram, Telegram, WhatsApp and YouTube.
-                CinemaDaily is not responsible for the privacy practices of
-                third-party services.
+                CinemaDaily contains links to third-party platforms and services,
+                including Instagram, Telegram, WhatsApp and YouTube.
+            </p>
+
+
+            <p>
+                When you visit or interact with a third-party service, its own
+                privacy policy and terms apply. CinemaDaily does not control the
+                privacy practices of third-party platforms.
             </p>
 
 
@@ -333,22 +481,45 @@ layout: null
 
 
             <p>
-                If advertising services are added to CinemaDaily, those services
-                may use cookies or similar technologies to deliver, measure or
-                personalize advertising in accordance with their own privacy
-                policies and applicable laws.
+                CinemaDaily may display advertising or work with advertising
+                and commercial partners.
+            </p>
+
+
+            <p>
+                Advertising providers may use cookies or similar technologies
+                to deliver, measure or personalize advertising according to
+                their own privacy policies and applicable requirements.
             </p>
 
 
             <h2>
-                Changes to This Policy
+                External Links
             </h2>
 
 
             <p>
-                CinemaDaily may update this Privacy Policy from time to time.
-                Changes will be reflected on this page together with an updated
-                revision date.
+                Articles and other pages on CinemaDaily may contain links to
+                external websites. CinemaDaily is not responsible for the
+                content, security or privacy practices of websites operated by
+                third parties.
+            </p>
+
+
+            <h2>
+                Changes to This Privacy Policy
+            </h2>
+
+
+            <p>
+                CinemaDaily may update this Privacy Policy from time to time to
+                reflect changes to the website, services or operating practices.
+            </p>
+
+
+            <p>
+                When this policy is updated, the revision date shown on this
+                page may also be updated.
             </p>
 
 
@@ -358,9 +529,11 @@ layout: null
 
 
             <p>
-                Questions regarding this Privacy Policy can be submitted through
-                our
-
+                Questions regarding this Privacy Policy can be sent to
+                <a href="mailto:info@cinemadaily.ca">
+                    info@cinemadaily.ca
+                </a>
+                or submitted through our
                 <a href="{{ '/contact.html' | relative_url }}">
                     Contact page
                 </a>.
@@ -387,7 +560,7 @@ layout: null
 
 
             <p>
-                Film, television and entertainment news from around the world.
+                English-language coverage of Iranian cinema, film, television and entertainment.
             </p>
 
 
@@ -395,6 +568,14 @@ layout: null
 
                 <a href="{{ '/about.html' | relative_url }}">
                     About
+                </a>
+
+                <a href="{{ '/editorial.html' | relative_url }}">
+                    Editorial Policy
+                </a>
+
+                <a href="{{ '/team.html' | relative_url }}">
+                    Editorial Team
                 </a>
 
                 <a href="{{ '/contact.html' | relative_url }}">
@@ -449,12 +630,22 @@ layout: null
             </div>
 
 
+            <div class="footer-links">
+
+                <a href="mailto:info@cinemadaily.ca">
+                    info@cinemadaily.ca
+                </a>
+
+            </div>
+
+
             <div class="copyright">
-                © 2026 CinemaDaily. All rights reserved.
+                © 2026 CINEMADAILY MEDIA INC. All rights reserved.
             </div>
 
 
         </div>
+
 
     </footer>
 
