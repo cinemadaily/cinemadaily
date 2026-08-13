@@ -229,6 +229,53 @@
             text-decoration: underline;
         }
 
+
+        /* PEOPLE */
+
+        .article-people {
+            margin-top: 45px;
+            padding-top: 22px;
+            border-top: 1px solid #dddddd;
+        }
+
+        .article-people-title {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #777777;
+        }
+
+        .article-people-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .article-person {
+            display: inline-block;
+            padding: 7px 12px;
+            border: 1px solid #dddddd;
+            border-radius: 20px;
+            font-size: 14px;
+            line-height: 1.2;
+            color: #222222;
+            text-decoration: none;
+            background: #ffffff;
+        }
+
+        a.article-person {
+            font-weight: 700;
+        }
+
+        a.article-person:hover {
+            border-color: #6c2bd9;
+            color: #6c2bd9;
+        }
+
+
         @media (max-width: 768px) {
 
             .article-main-image {
@@ -475,6 +522,72 @@
             <article class="article-content">
 
                 {{ content }}
+
+
+                <!-- PEOPLE -->
+
+                {% if page.people %}
+
+                {% assign page_people = page.people | split: "," %}
+
+                <div class="article-people">
+
+                    <span class="article-people-title">
+
+                        {% if page.language == "fa" %}
+                            افراد مرتبط
+                        {% else %}
+                            People
+                        {% endif %}
+
+                    </span>
+
+
+                    <div class="article-people-list">
+
+
+                        {% for person in page_people %}
+
+                            {% assign clean_person = person | strip %}
+                            {% assign person_page = nil %}
+
+
+                            {% for profile in site.people %}
+
+                                {% if profile.name == clean_person %}
+                                    {% assign person_page = profile %}
+                                {% endif %}
+
+                            {% endfor %}
+
+
+                            {% if person_page %}
+
+                            <a
+                                href="{{ person_page.url | relative_url }}"
+                                class="article-person"
+                            >
+                                {{ clean_person }}
+                            </a>
+
+                            {% else %}
+
+                            <span class="article-person">
+                                {{ clean_person }}
+                            </span>
+
+                            {% endif %}
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
 
             </article>
 
