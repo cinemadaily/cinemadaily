@@ -52,6 +52,12 @@ content:
         type: text
         required: true
 
+      - name: people
+        label: People
+        type: string
+        required: false
+        description: Main people mentioned in the article
+
       - name: image
         label: Featured Image
         type: image
