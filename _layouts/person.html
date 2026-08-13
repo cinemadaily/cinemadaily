@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html lang="{{ page.language | default: 'en' }}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- BASIC SEO -->
+
+    <title>{{ page.title | default: page.name }} | CinemaDaily</title>
+
+    <meta
+        name="description"
+        content="{{ page.description | default: page.name | escape }}"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <link
+        rel="canonical"
+        href="{{ page.url | absolute_url }}"
+    >
+
+
+    <!-- OPEN GRAPH -->
+
+    <meta
+        property="og:type"
+        content="profile"
+    >
+
+    <meta
+        property="og:site_name"
+        content="CinemaDaily"
+    >
+
+    <meta
+        property="og:title"
+        content="{{ page.title | default: page.name | escape }}"
+    >
+
+    <meta
+        property="og:description"
+        content="{{ page.description | default: page.name | escape }}"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ page.url | absolute_url }}"
+    >
+
+    <meta
+        property="og:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+
+    <!-- TWITTER / X -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="{{ page.title | default: page.name | escape }}"
+    >
+
+    <meta
+        name="twitter:description"
+        content="{{ page.description | default: page.name | escape }}"
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://cinemadaily.ca/images/logo2.jpeg"
+    >
+
+
+    <!-- FAVICON -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="{{ '/images/favicon.png' | relative_url }}"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        href="{{ '/images/favicon.png' | relative_url }}"
+    >
+
+
+    <!-- STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": {{ page.url | absolute_url | append: "#profile" | jsonify }},
+        "url": {{ page.url | absolute_url | jsonify }},
+        "name": {{ page.title | default: page.name | jsonify }},
+        "description": {{ page.description | default: page.name | jsonify }},
+        "inLanguage": {{ page.language | default: "en" | jsonify }},
+        "mainEntity": {
+            "@type": "Person",
+            "@id": {{ page.url | absolute_url | append: "#person" | jsonify }},
+            "name": {{ page.name | jsonify }},
+            "url": {{ page.url | absolute_url | jsonify }}
+        },
+        "isPartOf": {
+            "@id": "https://cinemadaily.ca/#website"
+        },
+        "publisher": {
+            "@id": "https://cinemadaily.ca/#organization"
+        }
+    }
+    </script>
+
+
+    <link
+        rel="stylesheet"
+        href="{{ '/style.css' | relative_url }}"
+    >
+
+
+    <style>
+
+        .person-page {
+            padding: 70px 0 100px;
+        }
+
+        .person-header {
+            max-width: 850px;
+            margin-bottom: 55px;
+        }
+
+        .person-header h1 {
+            font-size: 52px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .person-description {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #333333;
+        }
+
+        .person-content {
+            margin-top: 25px;
+            font-size: 18px;
+            line-height: 1.9;
+            color: #333333;
+        }
+
+        .person-news-title {
+            border-top: 3px solid #111111;
+            padding-top: 22px;
+            margin: 55px 0 28px;
+            font-size: 30px;
+        }
+
+        .person-news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .person-story {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .person-story img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+
+        .person-story-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: #eeeeee;
+            margin-bottom: 16px;
+        }
+
+        .person-story .category {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .person-story h2 {
+            font-size: 22px;
+            line-height: 1.3;
+            margin: 0 0 10px;
+        }
+
+        .person-story p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555555;
+            margin: 0;
+        }
+
+        .no-person-stories {
+            font-size: 18px;
+            color: #666666;
+        }
+
+        @media (max-width: 900px) {
+
+            .person-news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .person-page {
+                padding: 45px 0 70px;
+            }
+
+            .person-header h1 {
+                font-size: 38px;
+            }
+
+            .person-description,
+            .person-content {
+                font-size: 17px;
+            }
+
+            .person-news-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="site-header">
+
+
+    <div class="header-main">
+
+
+        <div class="header-logo">
+
+            <a href="{{ '/index.html' | relative_url }}">
+
+                <img
+                    src="{{ '/images/logo2.jpeg' | relative_url }}"
+                    alt="CinemaDaily"
+                >
+
+            </a>
+
+        </div>
+
+
+        <div class="container header-bottom">
+
+
+            <div class="language">
+
+                <a
+                    href="{{ '/index.html' | relative_url }}"
+                    class="active"
+                >
+                    EN
+                </a>
+
+                <span>|</span>
+
+                <a href="{{ '/fa.html' | relative_url }}">
+                    فارسی
+                </a>
+
+            </div>
+
+
+            <div class="social-links">
+
+                <a
+                    href="https://www.instagram.com/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="https://t.me/cinemadaily"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Telegram
+                </a>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://m.youtube.com/cinemadailytv?ra=m"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    YouTube
+                </a>
+
+                <a href="{{ '/search.html' | relative_url }}">
+                    Search
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="main-nav">
+
+        <div class="container nav-inner">
+
+            <a href="{{ '/news.html' | relative_url }}">NEWS</a>
+            <a href="{{ '/film.html' | relative_url }}">FILM</a>
+            <a href="{{ '/tv.html' | relative_url }}">TV</a>
+            <a href="{{ '/reviews.html' | relative_url }}">REVIEWS</a>
+            <a href="{{ '/box-office.html' | relative_url }}">BOX OFFICE</a>
+            <a href="{{ '/awards.html' | relative_url }}">AWARDS</a>
+            <a href="{{ '/trailers.html' | relative_url }}">TRAILERS</a>
+            <a href="{{ '/features.html' | relative_url }}">FEATURES</a>
+
+        </div>
+
+    </nav>
+
+
+</header>
+
+
+
+<!-- PERSON PAGE -->
+
+<main class="person-page">
+
+
+    <div class="container">
+
+
+        <div class="person-header">
+
+
+            <span class="category">
+                PEOPLE
+            </span>
+
+
+            <h1>
+                {{ page.name }}
+            </h1>
+
+
+            {% if page.description %}
+
+            <p class="person-description">
+                {{ page.description }}
+            </p>
+
+            {% endif %}
+
+
+            {% if content != "" %}
+
+            <div class="person-content">
+                {{ content }}
+            </div>
+
+            {% endif %}
+
+
+        </div>
+
+
+
+        <h2 class="person-news-title">
+            Latest News About {{ page.name }}
+        </h2>
+
+
+        {% assign all_articles = site.articles
+            | where: "language", page.language
+            | sort: "date"
+            | reverse
+        %}
+
+        {% assign person_story_count = 0 %}
+
+
+        <div class="person-news-grid">
+
+
+            {% for article in all_articles %}
+
+                {% if article.people %}
+
+                    {% assign article_people = article.people | split: "," %}
+                    {% assign person_match = false %}
+
+                    {% for article_person in article_people %}
+
+                        {% assign clean_article_person = article_person | strip %}
+
+                        {% if clean_article_person == page.name %}
+                            {% assign person_match = true %}
+                        {% endif %}
+
+                    {% endfor %}
+
+
+                    {% if person_match %}
+
+                    <a
+                        href="{{ article.url | relative_url }}"
+                        class="person-story"
+                    >
+
+
+                        {% if article.image %}
+
+                        <img
+                            src="{{ article.image | relative_url }}"
+                            alt="{{ article.title | escape }}"
+                        >
+
+                        {% else %}
+
+                        <div class="person-story-image"></div>
+
+                        {% endif %}
+
+
+                        <span class="category">
+                            {{ article.category }}
+                        </span>
+
+
+                        <h2>
+                            {{ article.title }}
+                        </h2>
+
+
+                        {% if article.summary %}
+
+                        <p>
+                            {{ article.summary }}
+                        </p>
+
+                        {% endif %}
+
+
+                    </a>
+
+                    {% assign person_story_count = person_story_count | plus: 1 %}
+
+                    {% endif %}
+
+                {% endif %}
+
+            {% endfor %}
+
+
+        </div>
+
+
+        {% if person_story_count == 0 %}
+
+        <p class="no-person-stories">
+            No stories about {{ page.name }} have been published yet.
+        </p>
+
+        {% endif %}
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+
+    <div class="container footer-inner">
+
+
+        <div class="footer-logo">
+            CINEMA<span>DAILY</span>
+        </div>
+
+
+        <p>
+            English-language coverage of Iranian cinema, film, television and entertainment.
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="{{ '/about.html' | relative_url }}">
+                About
+            </a>
+
+            <a href="{{ '/editorial.html' | relative_url }}">
+                Editorial Policy
+            </a>
+
+            <a href="{{ '/team.html' | relative_url }}">
+                Editorial Team
+            </a>
+
+            <a href="{{ '/contact.html' | relative_url }}">
+                Contact
+            </a>
+
+            <a href="{{ '/privacy.html' | relative_url }}">
+                Privacy
+            </a>
+
+            <a href="{{ '/search.html' | relative_url }}">
+                Search
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a
+                href="https://www.instagram.com/cinemadaily"
+                target="_blank"
+                rel="noopener"
+            >
+                Instagram
+            </a>
+
+            <a
+                href="https://t.me/cinemadaily"
+                target="_blank"
+                rel="noopener"
+            >
+                Telegram
+            </a>
+
+            <a
+                href="https://whatsapp.com/channel/0029Vb9QKWXF6sn2nelVPs2F"
+                target="_blank"
+                rel="noopener"
+            >
+                WhatsApp
+            </a>
+
+            <a
+                href="https://m.youtube.com/cinemadailytv?ra=m"
+                target="_blank"
+                rel="noopener"
+            >
+                YouTube
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="mailto:info@cinemadaily.ca">
+                info@cinemadaily.ca
+            </a>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 CINEMADAILY MEDIA INC. All rights reserved.
+        </div>
+
+
+    </div>
+
+
+</footer>
+
+
+</body>
+
+</html>
