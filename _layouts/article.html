@@ -199,8 +199,6 @@
     >
 
 
-    <!-- ARTICLE IMAGE + BYLINE -->
-
     <style>
 
         .article-main-image {
@@ -277,7 +275,6 @@
         </div>
 
 
-
         <div class="container header-bottom">
 
 
@@ -304,7 +301,6 @@
                 </a>
 
             </div>
-
 
 
             <div class="social-links">
@@ -354,44 +350,27 @@
     </div>
 
 
-
     <!-- NAVIGATION -->
 
     <nav class="main-nav">
 
         <div class="container nav-inner">
 
-            <a href="{{ '/news.html' | relative_url }}">
-                NEWS
-            </a>
+            <a href="{{ '/news.html' | relative_url }}">NEWS</a>
 
-            <a href="{{ '/film.html' | relative_url }}">
-                FILM
-            </a>
+            <a href="{{ '/film.html' | relative_url }}">FILM</a>
 
-            <a href="{{ '/tv.html' | relative_url }}">
-                TV
-            </a>
+            <a href="{{ '/tv.html' | relative_url }}">TV</a>
 
-            <a href="{{ '/reviews.html' | relative_url }}">
-                REVIEWS
-            </a>
+            <a href="{{ '/reviews.html' | relative_url }}">REVIEWS</a>
 
-            <a href="{{ '/box-office.html' | relative_url }}">
-                BOX OFFICE
-            </a>
+            <a href="{{ '/box-office.html' | relative_url }}">BOX OFFICE</a>
 
-            <a href="{{ '/awards.html' | relative_url }}">
-                AWARDS
-            </a>
+            <a href="{{ '/awards.html' | relative_url }}">AWARDS</a>
 
-            <a href="{{ '/trailers.html' | relative_url }}">
-                TRAILERS
-            </a>
+            <a href="{{ '/trailers.html' | relative_url }}">TRAILERS</a>
 
-            <a href="{{ '/features.html' | relative_url }}">
-                FEATURES
-            </a>
+            <a href="{{ '/features.html' | relative_url }}">FEATURES</a>
 
         </div>
 
@@ -419,11 +398,9 @@
         {% endif %}
 
 
-
         <h1 class="article-title">
             {{ page.title }}
         </h1>
-
 
 
         {% if page.summary %}
@@ -433,7 +410,6 @@
         </div>
 
         {% endif %}
-
 
 
         {% if page.date %}
@@ -478,7 +454,6 @@
         </div>
 
 
-
         {% if page.image %}
 
         <img
@@ -494,7 +469,6 @@
         {% endif %}
 
 
-
         <div class="article-layout">
 
 
@@ -503,7 +477,6 @@
                 {{ content }}
 
             </article>
-
 
 
             <aside class="article-sidebar">
@@ -520,8 +493,7 @@
                 </div>
 
 
-                {% assign related_articles = site.articles
-                    | where: "category", page.category
+                {% assign all_articles = site.articles
                     | where: "language", page.language
                     | sort: "date"
                     | reverse
@@ -529,30 +501,133 @@
 
                 {% assign related_count = 0 %}
 
-                {% for article in related_articles %}
+                {% assign page_people = page.people
+                    | default: ""
+                    | split: ","
+                %}
 
-                    {% if article.url != page.url and related_count < 4 %}
 
-                    <a
-                        href="{{ article.url | relative_url }}"
-                        class="sidebar-story"
-                    >
+                <!-- PEOPLE MATCHES -->
 
-                        <span class="category">
-                            {{ article.category }}
-                        </span>
+                {% if page.people %}
 
-                        <strong>
-                            {{ article.title }}
-                        </strong>
+                    {% for article in all_articles %}
 
-                    </a>
+                        {% if article.url != page.url
+                            and article.people
+                            and related_count < 4
+                        %}
 
-                    {% assign related_count = related_count | plus: 1 %}
+                            {% assign article_people = article.people | split: "," %}
+                            {% assign people_match = false %}
 
-                    {% endif %}
+                            {% for person in page_people %}
 
-                {% endfor %}
+                                {% assign clean_person = person | strip %}
+
+                                {% for article_person in article_people %}
+
+                                    {% assign clean_article_person = article_person | strip %}
+
+                                    {% if clean_person == clean_article_person %}
+                                        {% assign people_match = true %}
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            {% endfor %}
+
+
+                            {% if people_match %}
+
+                            <a
+                                href="{{ article.url | relative_url }}"
+                                class="sidebar-story"
+                            >
+
+                                <span class="category">
+                                    {{ article.category }}
+                                </span>
+
+                                <strong>
+                                    {{ article.title }}
+                                </strong>
+
+                            </a>
+
+                            {% assign related_count = related_count | plus: 1 %}
+
+                            {% endif %}
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% endif %}
+
+
+                <!-- CATEGORY FALLBACK -->
+
+                {% if related_count < 4 %}
+
+                    {% for article in all_articles %}
+
+                        {% if article.url != page.url
+                            and article.category == page.category
+                            and related_count < 4
+                        %}
+
+                            {% assign already_related = false %}
+
+                            {% if page.people and article.people %}
+
+                                {% assign article_people = article.people | split: "," %}
+
+                                {% for person in page_people %}
+
+                                    {% assign clean_person = person | strip %}
+
+                                    {% for article_person in article_people %}
+
+                                        {% assign clean_article_person = article_person | strip %}
+
+                                        {% if clean_person == clean_article_person %}
+                                            {% assign already_related = true %}
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                {% endfor %}
+
+                            {% endif %}
+
+
+                            {% unless already_related %}
+
+                            <a
+                                href="{{ article.url | relative_url }}"
+                                class="sidebar-story"
+                            >
+
+                                <span class="category">
+                                    {{ article.category }}
+                                </span>
+
+                                <strong>
+                                    {{ article.title }}
+                                </strong>
+
+                            </a>
+
+                            {% assign related_count = related_count | plus: 1 %}
+
+                            {% endunless %}
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                {% endif %}
 
 
                 {% if related_count == 0 %}
@@ -607,7 +682,6 @@
         </p>
 
 
-
         <div class="footer-links">
 
             <a href="{{ '/about.html' | relative_url }}">
@@ -635,7 +709,6 @@
             </a>
 
         </div>
-
 
 
         <div class="footer-links">
@@ -682,7 +755,6 @@
             </a>
 
         </div>
-
 
 
         <div class="copyright">
