@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://cinemadaily.ca/sitemap.xml
+Sitemap: https://cinemadaily.ca/news-sitemap.xml
