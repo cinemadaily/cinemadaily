@@ -1,0 +1,52 @@
+---
+layout: null
+---
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+
+<title>CinemaDaily</title>
+<link>https://cinemadaily.ca/</link>
+<description>Latest Iranian cinema, film, television and entertainment news from CinemaDaily.</description>
+<language>en</language>
+
+{% assign english_articles = site.articles
+  | where: "language", "en"
+  | sort: "date"
+  | reverse
+%}
+
+{% for article in english_articles limit:30 %}
+
+<item>
+
+<title>{{ article.title | escape }}</title>
+
+<link>https://cinemadaily.ca{{ article.url }}</link>
+
+<guid isPermaLink="true">
+https://cinemadaily.ca{{ article.url }}
+</guid>
+
+<pubDate>
+{{ article.date | date_to_rfc822 }}
+</pubDate>
+
+<description>
+{{ article.summary | escape }}
+</description>
+
+{% if article.image %}
+<enclosure
+  url="https://cinemadaily.ca{{ article.image }}"
+  type="image/jpeg"
+/>
+{% endif %}
+
+</item>
+
+{% endfor %}
+
+</channel>
+</rss>
