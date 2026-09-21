@@ -1,6 +1,6 @@
 ---
 title: Laleh Marzban Wins Best Actress in Venice’s Orizzonti Section
-category: Film
+category: News
 language: fa
 date: 2026-09-20
 summary: Laleh Marzban has won the Best Actress award in the Orizzonti section
