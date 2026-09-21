@@ -1,7 +1,7 @@
 ---
 title: Laleh Marzban Wins Best Actress in Venice’s Orizzonti Section
 category: News
-language: fa
+language: en
 date: 2026-09-20
 summary: Laleh Marzban has won the Best Actress award in the Orizzonti section
   of the Venice Film Festival for her performance in “Falling House” (“Moraqeb”)
